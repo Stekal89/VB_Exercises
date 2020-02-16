@@ -106,6 +106,49 @@ Module Program
 
         '8. Führen Sie Aufgabe 5 und 6 mit Variablen, die Sie vom Benutzer einlesen aus.
 
+        Console.WriteLine($"{nl}############# Exercise 8: #############")
+        Console.Write("Insert value for value x: ")
+        Dim xAsString As String = Console.ReadLine()
+        Console.Write("Insert value for value y: ")
+        Dim yAsString As String = Console.ReadLine()
+        Console.Write("Insert value for value z: ")
+        Dim zAsString As String = Console.ReadLine()
+
+        Integer.TryParse(xAsString, x)
+        Integer.TryParse(yAsString, y)
+        Integer.TryParse(zAsString, z)
+
+        Console.WriteLine($"{nl}### Exercise 8a):")
+        result = (x * x * z) / y + x
+        Console.WriteLine("(x * x * z) / y + x = ?")
+        Console.WriteLine($"({x} * {x} * {z}) / {y} = {result}{nl}")
+
+        result = z + z - x + y
+        Console.WriteLine("z + z - x + y = ?")
+        Console.WriteLine($"{z} + {z} - {x} + {y} = {result}")
+
+        Console.WriteLine($"{nl}### Exercise 8b):")
+        b = x + y < z
+        Console.WriteLine("x + y < z = ?")
+        Console.WriteLine($"({x} + {y} < {z}) = {b}{nl}")
+
+        b = x > y - z
+
+        Console.WriteLine("x > y - z = ?")
+        Console.WriteLine($"{x} > {y} - {z} = {b}{nl}")
+
+        b = x <> y
+
+        Console.WriteLine("x <> y = ?")
+        Console.WriteLine($"{x} <> {y} = {b}{nl}")
+
+        b = x = z
+
+        Console.WriteLine("x = z = ?")
+        Console.WriteLine($"{x} = {z} = {b}{nl}")
+        Console.WriteLine("Continue with any key...")
+        'Console.ReadKey()
+        Console.Clear()
 
         '9. Erstellen Sie ein Programm, das einen Namen, ein Alter und ein Geburtsdatum von der Konsole
         'einliest.und Geben Sie folgenden Satz auf der Konsole aus: Hallo 'Name' du bist 'Alter' alt und
