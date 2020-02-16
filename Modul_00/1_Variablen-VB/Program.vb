@@ -33,6 +33,12 @@ Module Program
         '3. Erstellen Sie ein Programm, das drei Variablen vom Typ int mit den Werten x:15, y:76 und z:24
         'anlegt.Geben Sie die Variablennamen und die Werte nebeneinander auf der Konsole aus.
 
+        Dim x As Integer = 15
+        Dim y As Integer = 76
+        Dim z As Integer = 24
+
+        Console.WriteLine($"{nl}############# Exercise 3: #############")
+        Console.WriteLine($"Values: x = ""{x}"", y = ""{y}"", z ""{z}"",{nl}{nl}")
 
         '4. Berechnen Sie x * y + z Weisen Sie das Ergebnis an eine Variable namens ergebnis zu. Geben Sie
         'diese Variable und die Rechnungen auf der Konsole aus.
