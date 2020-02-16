@@ -74,7 +74,7 @@ Module Program
         z = 15
         b = x + y < z
 
-        Console.WriteLine($"{nl}############# Exercise 5: #############")
+        Console.WriteLine($"{nl}############# Exercise 6: #############")
         Console.WriteLine("x + y < z = ?")
         Console.WriteLine($"({x} + {y} < {z}) = {b}{nl}")
 
@@ -93,11 +93,16 @@ Module Program
         Console.WriteLine("x = z = ?")
         Console.WriteLine($"{x} = {z} = {b}{nl}")
 
-
         '7. Erstellen Sie zwei String Variablen. Geben Sie die Variablen auf der Konsole untereinander aus.
         'Geben Sie die Variablen danach auf einer Zeile aus. Benutzen Sie dazu einerseits den '&'
         'Operator zusammen mit Console.WriteLine und andererseits Console.Write zum Ausgeben.
 
+        Dim t1 As String = "Das ist der 1. Text!!!"
+        Dim t2 As String = "Und das ist der 2. Text!!!"
+
+        Console.WriteLine($"{nl}############# Exercise 7: #############")
+        Console.WriteLine(t1)
+        Console.WriteLine(t2, nl, nl)
 
         '8. Führen Sie Aufgabe 5 und 6 mit Variablen, die Sie vom Benutzer einlesen aus.
 
