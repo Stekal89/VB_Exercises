@@ -1,0 +1,11 @@
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\1_Variablen-VB\bin\Debug\netcoreapp3.1\1_Variablen-VB.exe
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\1_Variablen-VB\bin\Debug\netcoreapp3.1\1_Variablen-VB.deps.json
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\1_Variablen-VB\bin\Debug\netcoreapp3.1\1_Variablen-VB.runtimeconfig.json
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\1_Variablen-VB\bin\Debug\netcoreapp3.1\1_Variablen-VB.runtimeconfig.dev.json
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\1_Variablen-VB\bin\Debug\netcoreapp3.1\1_Variablen-VB.dll
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\1_Variablen-VB\bin\Debug\netcoreapp3.1\1_Variablen-VB.pdb
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\1_Variablen-VB\obj\Debug\netcoreapp3.1\1_Variablen-VB.vbprojAssemblyReference.cache
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\1_Variablen-VB\obj\Debug\netcoreapp3.1\1_Variablen-VB.AssemblyInfoInputs.cache
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\1_Variablen-VB\obj\Debug\netcoreapp3.1\1_Variablen-VB.AssemblyInfo.vb
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\1_Variablen-VB\obj\Debug\netcoreapp3.1\1_Variablen-VB.dll
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\1_Variablen-VB\obj\Debug\netcoreapp3.1\1_Variablen-VB.pdb
