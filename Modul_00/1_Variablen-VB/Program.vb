@@ -14,7 +14,6 @@ Module Program
         Dim text As String = "Hallo Welt"
         Dim tf As Boolean = False
 
-
         Console.WriteLine($"{nl}############# Exercise 1: #############")
         Console.WriteLine($"Double:  ""{dNumb}""")
         Console.WriteLine($"Int32:   ""{dInt}""")
@@ -24,6 +23,12 @@ Module Program
         '2. Erstellen Sie ein Programm, das zwei Variablen vom Typ int anlegt und diese auf der Konsole
         'ausgibt.
 
+        Dim i1 As Integer = 21
+        Dim i2 As Integer = 45
+
+        Console.WriteLine($"{nl}############# Exercise 2: #############")
+        Console.WriteLine($"I1: ""{i1}""")
+        Console.WriteLine($"I2: ""{i2}""{nl}{nl}")
 
         '3. Erstellen Sie ein Programm, das drei Variablen vom Typ int mit den Werten x:15, y:76 und z:24
         'anlegt.Geben Sie die Variablennamen und die Werte nebeneinander auf der Konsole aus.
