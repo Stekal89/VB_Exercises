@@ -38,15 +38,30 @@ Module Program
         Dim z As Integer = 24
 
         Console.WriteLine($"{nl}############# Exercise 3: #############")
-        Console.WriteLine($"Values: x = ""{x}"", y = ""{y}"", z ""{z}"",{nl}{nl}")
+        Console.WriteLine($"Values: x = ""{x}"", y = ""{y}"", z = ""{z}"",{nl}{nl}")
 
         '4. Berechnen Sie x * y + z Weisen Sie das Ergebnis an eine Variable namens ergebnis zu. Geben Sie
         'diese Variable und die Rechnungen auf der Konsole aus.
 
+        Dim result As Integer = x * y + z
+
+        Console.WriteLine($"{nl}############# Exercise 4: #############")
+        Console.WriteLine("y * y + z = ?")
+        Console.WriteLine($"{x} * {y} + {z} = {result} {nl}{nl}")
 
         '5. Berechnen Sie (x*x*z)/y + x und z+z-x+y. Verwenden Sie die gleiche Variable wie vorher um das
         'Ergebnis zu speichern und geben sie nach jedem Schritt die Rechnung und das ergebnis aus.
 
+        result = (x * x * z) / y + x
+
+        Console.WriteLine($"{nl}############# Exercise 5: #############")
+        Console.WriteLine("(x * x * z) / y + x = ?")
+        Console.WriteLine($"({x} * {x} * {z}) / {y} = {result}{nl}")
+
+        result = z + z - x + y
+
+        Console.WriteLine("z + z - x + y = ?")
+        Console.WriteLine($"{z} + {z} - {x} + {y} = {result}{nl}{nl}")
 
         '6. Erstellen Sie drei Variablen x, y und z vom typ int. Weisen Sie den Variablen beliebige Zahlen zu.
         'Erstellen Sie eine weitere Variable b. Berechnen Sie folgende Vergleiche: x +y < z, x > y - z, x <> y,
