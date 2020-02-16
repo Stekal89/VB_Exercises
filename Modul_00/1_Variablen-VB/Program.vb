@@ -68,6 +68,31 @@ Module Program
         'x = z und speichern Sie das Ergebnis in die Variable b. Geben Sie nach jedem Vergleich die
         'Variable b auf der Konsole aus.
 
+        Dim b As Boolean
+        x = 24
+        y = 46
+        z = 15
+        b = x + y < z
+
+        Console.WriteLine($"{nl}############# Exercise 5: #############")
+        Console.WriteLine("x + y < z = ?")
+        Console.WriteLine($"({x} + {y} < {z}) = {b}{nl}")
+
+        b = x > y - z
+
+        Console.WriteLine("x > y - z = ?")
+        Console.WriteLine($"({x} > {y} - {z} = {b}{nl}")
+
+        b = x <> y
+
+        Console.WriteLine("x <> y = ?")
+        Console.WriteLine($"({x} <> {y} = {b}{nl}")
+
+        b = x = z
+
+        Console.WriteLine("x = z = ?")
+        Console.WriteLine($"({x} = {z} = {b}{nl}")
+
 
         '7. Erstellen Sie zwei String Variablen. Geben Sie die Variablen auf der Konsole untereinander aus.
         'Geben Sie die Variablen danach auf einer Zeile aus. Benutzen Sie dazu einerseits den '&'
