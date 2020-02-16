@@ -81,17 +81,17 @@ Module Program
         b = x > y - z
 
         Console.WriteLine("x > y - z = ?")
-        Console.WriteLine($"({x} > {y} - {z} = {b}{nl}")
+        Console.WriteLine($"{x} > {y} - {z} = {b}{nl}")
 
         b = x <> y
 
         Console.WriteLine("x <> y = ?")
-        Console.WriteLine($"({x} <> {y} = {b}{nl}")
+        Console.WriteLine($"{x} <> {y} = {b}{nl}")
 
         b = x = z
 
         Console.WriteLine("x = z = ?")
-        Console.WriteLine($"({x} = {z} = {b}{nl}")
+        Console.WriteLine($"{x} = {z} = {b}{nl}")
 
 
         '7. Erstellen Sie zwei String Variablen. Geben Sie die Variablen auf der Konsole untereinander aus.
