@@ -147,13 +147,27 @@ Module Program
         Console.WriteLine("x = z = ?")
         Console.WriteLine($"{x} = {z} = {b}{nl}")
         Console.WriteLine("Continue with any key...")
-        'Console.ReadKey()
+        Console.ReadKey()
         Console.Clear()
 
         '9. Erstellen Sie ein Programm, das einen Namen, ein Alter und ein Geburtsdatum von der Konsole
         'einliest.und Geben Sie folgenden Satz auf der Konsole aus: Hallo 'Name' du bist 'Alter' alt und
         'am 'Geburtsdaum' geboren
 
+        Console.WriteLine($"{nl}############# Exercise 9: #############")
+        Console.Write("Please enter your name: ")
+        Dim name As String = Console.ReadLine()
+        Console.Write("Please enter your age: ")
+        Dim ageAsString As String = Console.ReadLine()
+        Console.Write("Please enter your birthdaate: ")
+        Dim birthdateAsString As String = Console.ReadLine()
+
+        Dim age As Integer
+        Integer.TryParse(ageAsString, age)
+        Dim birthdate As DateTime
+        DateTime.TryParse(birthdateAsString, birthdate)
+
+        Console.WriteLine($"{nl}{nl}Hy ""{name}"" you are ""{age}"" years old and your birthday is on ""{birthdate}"".")
 
         Console.ReadKey()
     End Sub
