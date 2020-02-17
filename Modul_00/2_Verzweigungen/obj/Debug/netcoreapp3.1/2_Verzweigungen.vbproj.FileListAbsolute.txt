@@ -1,0 +1,11 @@
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\2_Verzweigungen\bin\Debug\netcoreapp3.1\2_Verzweigungen.exe
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\2_Verzweigungen\bin\Debug\netcoreapp3.1\2_Verzweigungen.deps.json
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\2_Verzweigungen\bin\Debug\netcoreapp3.1\2_Verzweigungen.runtimeconfig.json
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\2_Verzweigungen\bin\Debug\netcoreapp3.1\2_Verzweigungen.runtimeconfig.dev.json
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\2_Verzweigungen\bin\Debug\netcoreapp3.1\2_Verzweigungen.dll
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\2_Verzweigungen\bin\Debug\netcoreapp3.1\2_Verzweigungen.pdb
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\2_Verzweigungen\obj\Debug\netcoreapp3.1\2_Verzweigungen.vbprojAssemblyReference.cache
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\2_Verzweigungen\obj\Debug\netcoreapp3.1\2_Verzweigungen.AssemblyInfoInputs.cache
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\2_Verzweigungen\obj\Debug\netcoreapp3.1\2_Verzweigungen.AssemblyInfo.vb
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\2_Verzweigungen\obj\Debug\netcoreapp3.1\2_Verzweigungen.dll
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\2_Verzweigungen\obj\Debug\netcoreapp3.1\2_Verzweigungen.pdb
