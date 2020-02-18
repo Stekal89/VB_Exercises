@@ -15,7 +15,7 @@ Module Program
         Dim whileCount As Integer = 0
         Dim whileMax As Integer = 10
 
-        Console.WriteLine($"{nl}{nl}############# Exercise 1: #############")
+        Console.WriteLine($"{nl}{nl}############# Exercise 1: #############{nl}")
 
         While whileCount <= whileMax
             Console.WriteLine($"Count: ""{whileCount}""")
@@ -32,7 +32,7 @@ Module Program
 
         ' 2. Erstellen Sie eine For Schleife, die die Zahlen von 0 bis 100 ausgibt.
 
-        Console.WriteLine($"{nl}{nl}############# Exercise 2: #############")
+        Console.WriteLine($"{nl}{nl}############# Exercise 2: #############{nl}")
 
         For i = 0 To 100
             Console.WriteLine($"I: ""{i}""")
@@ -48,11 +48,19 @@ Module Program
 
         ' 3. Erstellen Sie eine While Schleife, die rückwärts von 100 bis - 10 zählt und die Zahlen ausgibt.
 
-        'Console.WriteLine($"{nl}{nl}############# Exercise 3: #############")
+        Console.WriteLine($"{nl}{nl}############# Exercise 3: #############{nl}")
 
-        'Console.WriteLine($"{nl}{nl}Continue with any key...")
-        'Console.ReadKey()
-        'Console.Clear()
+        whileCount = 100
+        whileMax = -10
+
+        While whileCount >= whileMax
+            Console.WriteLine($"Number: ""{whileCount}""")
+            whileCount -= 1
+        End While
+
+        Console.WriteLine($"{nl}{nl}Continue with any key...")
+        Console.ReadKey()
+        Console.Clear()
 
 #End Region
 
