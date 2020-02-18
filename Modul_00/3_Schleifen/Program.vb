@@ -204,8 +204,6 @@ Module Program
 
 #End Region
 
-#End Region
-
 #Region "7)"
 
         ' 7. Erstellen Sie ein Programm, das von 0 bis 100 zählt. Das Programm soll bei jeder Zahl überprüfen,
@@ -235,17 +233,113 @@ Module Program
 
 #End Region
 
+#End Region
+
 #Region "8)"
 
         ' 8. Verbessern Sie das Programm aus Übung 7. Der Benutzer kann jetzt einen Zahlenbereich wählen
         ' und eine Zahl. Danach soll überprüft werden welche Zahlen in dem Zahlenbereich durch die Zahl
         ' teilbar sind.
 
-        'Console.WriteLine($"{nl}{nl}############# Exercise 8: #############")
+        Dim success As Boolean = False
 
-        'Console.WriteLine($"{nl}{nl}Continue with any key...")
-        'Console.ReadKey()
-        'Console.Clear()
+        Do
+            Console.WriteLine($"{nl}{nl}############# Exercise 8: #############{nl}")
+            Console.Write("Please enter your start of your numb-area: ")
+            Dim startOfNumbAreaAsString As String = Console.ReadLine()
+
+            ' Verify if input is null, empty, or whitespace
+            If Not String.IsNullOrEmpty(startOfNumbAreaAsString) And Not String.IsNullOrWhiteSpace(startOfNumbAreaAsString) Then
+
+                ' Verify if input is a integer
+                Dim startOfNumbArea As Integer
+                If Integer.TryParse(startOfNumbAreaAsString, startOfNumbArea) Then
+
+                    Console.Write("Please enter your end of your numb-area: ")
+                    Dim endOfNumbAreaAsString As String = Console.ReadLine()
+
+                    ' Verify if input is null, empty, or whitespace
+                    If Not String.IsNullOrEmpty(endOfNumbAreaAsString) And Not String.IsNullOrWhiteSpace(endOfNumbAreaAsString) Then
+
+                        ' Verify if input is a integer
+                        Dim endOfNumbArea As Integer
+                        If Integer.TryParse(endOfNumbAreaAsString, endOfNumbArea) Then
+
+                            Console.Write("Please enter your Dividor: ")
+                            Dim dividorAsString As String = Console.ReadLine()
+
+                            ' Verify if input is null, empty, or whitespace
+                            If Not String.IsNullOrEmpty(dividorAsString) And Not String.IsNullOrWhiteSpace(dividorAsString) Then
+
+                                ' Verify if input is a integer
+                                Dim dividor As Integer
+                                If Integer.TryParse(dividorAsString, dividor) Then
+
+                                    Console.WriteLine()
+                                    If startOfNumbArea <= endOfNumbArea Then
+
+                                        While startOfNumbArea <= endOfNumbArea
+                                            Console.WriteLine($"{startOfNumbArea} / {dividor} = {startOfNumbArea / dividor}")
+
+                                            Dim r As Integer = startOfNumbArea Mod dividor
+
+                                            Console.WriteLine($"{r} Rest")
+                                            If r = 0 Then
+                                                Console.WriteLine($"Number is divisible by {dividor}{nl}")
+                                            Else
+                                                Console.WriteLine($"Number is NOT divisible by {dividor}{nl}")
+                                            End If
+
+                                            startOfNumbArea += 1
+
+                                        End While
+
+                                    Else
+
+                                        While startOfNumbArea >= endOfNumbArea
+                                            Dim r As Integer = startOfNumbArea Mod dividor
+
+                                            Console.WriteLine($"{r} Rest")
+                                            If r = 0 Then
+                                                Console.WriteLine($"Number is divisible by {dividor}{nl}")
+                                            Else
+                                                Console.WriteLine($"Number is NOT divisible by {dividor}{nl}")
+                                            End If
+
+                                            startOfNumbArea -= 1
+
+                                        End While
+
+                                    End If
+
+                                    success = True
+                                Else
+                                    Console.WriteLine("Input is not an Integer!")
+                                End If
+
+                            Else
+                                Console.WriteLine("Input is null, empty, or whitespace!")
+                            End If
+                        Else
+                            Console.WriteLine("Input is not an Integer!")
+                        End If
+
+                    Else
+                        Console.WriteLine("Input is null, empty, or whitespace!")
+                    End If
+
+                Else
+                    Console.WriteLine("Input is not an Integer!")
+                End If
+
+            Else
+                Console.WriteLine("Input is null, empty, or whitespace!")
+            End If
+
+            Console.WriteLine($"{nl}{nl}Continue with any key...")
+            Console.ReadKey()
+            Console.Clear()
+        Loop While Not success
 
 #End Region
 
