@@ -212,11 +212,26 @@ Module Program
         ' ob Sie ohne Rest durch 2 Teilbar ist. (Hinweis: Modulo.zahl Mod 2 = 0). Wenn ja, soll das
         ' Programm 'Zahl' ist durch 2 Teilbar ausgeben. ansonsten 'Zahl' ist nicht durch 2 Teilbar.
 
-        'Console.WriteLine($"{nl}{nl}############# Exercise 7: #############")
+        Console.WriteLine($"{nl}{nl}############# Exercise 7: #############{nl}")
 
-        'Console.WriteLine($"{nl}{nl}Continue with any key...")
-        'Console.ReadKey()
-        'Console.Clear()
+        Dim result As Integer
+
+        For i = 0 To 100
+            Console.WriteLine($"{i} / 2 = {i / 2}")
+            result = i Mod 2
+
+            Console.WriteLine($"{result} Rest")
+            If result = 0 Then
+                Console.WriteLine($"Number is divisible by 2{nl}")
+            Else
+                Console.WriteLine($"Number is NOT divisible by 2{nl}")
+            End If
+
+        Next
+
+        Console.WriteLine($"{nl}{nl}Continue with any key...")
+        Console.ReadKey()
+        Console.Clear()
 
 #End Region
 
