@@ -32,11 +32,15 @@ Module Program
 
         ' 2. Erstellen Sie eine For Schleife, die die Zahlen von 0 bis 100 ausgibt.
 
-        'Console.WriteLine($"{nl}{nl}############# Exercise 2: #############")
+        Console.WriteLine($"{nl}{nl}############# Exercise 2: #############")
 
-        'Console.WriteLine($"{nl}{nl}Continue with any key...")
-        'Console.ReadKey()
-        'Console.Clear()
+        For i = 0 To 100
+            Console.WriteLine($"I: ""{i}""")
+        Next
+
+        Console.WriteLine($"{nl}{nl}Continue with any key...")
+        Console.ReadKey()
+        Console.Clear()
 
 #End Region
 
