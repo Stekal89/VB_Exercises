@@ -224,7 +224,7 @@ Module Program
 
         Console.WriteLine($"{nl}############# Exercise 7: #############")
         Console.Write("Please choose your operator (+,-,/,*): ")
-        Dim input As String = Console.ReadLine()
+        input = Console.ReadLine()
 
         ' Verify input variable -> If it is not null, empty, or Whitespace
         ' Verify if input variable is a valid operator (+,-,/,*)
