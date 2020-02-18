@@ -69,11 +69,19 @@ Module Program
         ' 4. Erstellen Sie eine While Schleife, die in zweier- Schritten von 0 bis 30 zählt und die Zahlen
         ' ausgibt.
 
-        'Console.WriteLine($"{nl}{nl}############# Exercise 4: #############")
+        Console.WriteLine($"{nl}{nl}############# Exercise 4: #############{nl}")
 
-        'Console.WriteLine($"{nl}{nl}Continue with any key...")
-        'Console.ReadKey()
-        'Console.Clear()
+        whileCount = 0
+        whileMax = 30
+
+        While whileCount <= whileMax
+            Console.WriteLine($"2 Incremet: ""{whileCount}""")
+            whileCount += 2
+        End While
+
+        Console.WriteLine($"{nl}{nl}Continue with any key...")
+        Console.ReadKey()
+        Console.Clear()
 
 #End Region
 
