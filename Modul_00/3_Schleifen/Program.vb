@@ -85,8 +85,6 @@ Module Program
 
 #End Region
 
-#End Region
-
 #Region "5)"
 
         ' 5. Erstellen Sie ein Programm, das zwei Zahlen von 0 bis 10 von der Konsole einliest. Die Schleife
@@ -142,7 +140,7 @@ Module Program
                                     Console.WriteLine("Input is not between 0 and 10!")
                                 End If
                             Else
-                                Console.WriteLine("Input is not a Integer!")
+                                Console.WriteLine("Input is not an Integer!")
                             End If
 
                         Else
@@ -152,7 +150,7 @@ Module Program
                         Console.WriteLine("Input is not between 0 and 10!")
                     End If
                 Else
-                    Console.WriteLine("Input is not a Integer!")
+                    Console.WriteLine("Input is not an Integer!")
                 End If
 
             Else
@@ -171,11 +169,40 @@ Module Program
 
         ' 6. Erstellen Sie ein Programm, das je nach Eingabe eine bestimmte Anzahl von * ausgibt.
 
-        'Console.WriteLine($"{nl}{nl}############# Exercise 6: #############")
+        Console.WriteLine($"{nl}{nl}############# Exercise 6: #############{nl}")
 
-        'Console.WriteLine($"{nl}{nl}Continue with any key...")
-        'Console.ReadKey()
-        'Console.Clear()
+        Console.Write("Insert the count of stars you want to print out: ")
+        Dim starsAsString As String = Console.ReadLine()
+
+        ' Verify if input is not null, empty, or a whitespace
+        If Not String.IsNullOrEmpty(starsAsString) And Not String.IsNullOrWhiteSpace(starsAsString) Then
+
+            ' Verify if input is an integer
+            Dim stars As Integer
+            If Integer.TryParse(starsAsString, stars) Then
+                If stars >= 1 Then
+                    starsAsString = ""
+                    For i = 1 To stars
+                        starsAsString += $"*"
+                    Next
+
+                    Console.WriteLine(starsAsString)
+                Else
+                    Console.WriteLine("Input is smaller than 1!")
+                End If
+            Else
+                Console.WriteLine("Input is not an Integer!")
+            End If
+
+        Else
+            Console.WriteLine("Input is null, empty, or whitespace!")
+        End If
+
+        Console.WriteLine($"{nl}{nl}Continue with any key...")
+        Console.ReadKey()
+        Console.Clear()
+
+#End Region
 
 #End Region
 
