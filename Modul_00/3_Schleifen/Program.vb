@@ -6,7 +6,7 @@ Module Program
         Dim nl As String = vbCrLf
 
         '        Aufgabenblatt -Schleifen
-
+#Region "Commented out"
 
 #Region "1)"
 
@@ -85,16 +85,85 @@ Module Program
 
 #End Region
 
+#End Region
+
 #Region "5)"
 
         ' 5. Erstellen Sie ein Programm, das zwei Zahlen von 0 bis 10 von der Konsole einliest. Die Schleife
         ' soll von der ersten eingegebenen Zahl bis zur zweiten eingegebenen Zahl zählen.
 
-        'Console.WriteLine($"{nl}{nl}############# Exercise 5: #############")
+        Dim fin As Boolean = False
 
-        'Console.WriteLine($"{nl}{nl}Continue with any key...")
-        'Console.ReadKey()
-        'Console.Clear()
+        Do
+
+            Console.WriteLine($"{nl}{nl}############# Exercise 5: #############{nl}")
+
+            Console.Write("Please Enter your Start-Number (0-10): ")
+            Dim firstNumbAsString As String = Console.ReadLine()
+
+            ' Verify if input is not null, empty, or whitespace
+            If Not String.IsNullOrEmpty(firstNumbAsString) And Not String.IsNullOrWhiteSpace(firstNumbAsString) Then
+
+                ' Verify if input is a number
+                Dim firstNumb As Integer
+                If Integer.TryParse(firstNumbAsString, firstNumb) Then
+
+                    ' Verify if number is between 0 and 10
+                    If firstNumb >= 0 And firstNumb <= 10 Then
+                        Console.Write("Please Enter your End-Number (0-10): ")
+                        Dim secondNumbAsString As String = Console.ReadLine()
+
+                        ' Verify if input is not null, empty, or whitespace
+                        If Not String.IsNullOrEmpty(firstNumbAsString) And Not String.IsNullOrWhiteSpace(firstNumbAsString) Then
+
+                            ' Verify if input is a number
+                            Dim secondNumb As Integer
+                            If Integer.TryParse(secondNumbAsString, secondNumb) Then
+
+                                If secondNumb >= 0 And secondNumb <= 10 Then
+                                    Console.WriteLine()
+                                    If firstNumb < secondNumb Then
+                                        While firstNumb <= secondNumb
+                                            Console.WriteLine($"Numb: {firstNumb}")
+                                            firstNumb += 1
+                                        End While
+                                        fin = True
+                                    ElseIf firstNumb > secondNumb Then
+                                        While firstNumb >= secondNumb
+                                            Console.WriteLine($"Numb: {firstNumb}")
+                                            firstNumb -= 1
+                                        End While
+                                        fin = True
+                                    Else
+                                        Console.WriteLine($"{nl}Cannot create a loop because both numbers are equal!")
+                                    End If
+
+                                Else
+                                    Console.WriteLine("Input is not between 0 and 10!")
+                                End If
+                            Else
+                                Console.WriteLine("Input is not a Integer!")
+                            End If
+
+                        Else
+                            Console.WriteLine("Input is null, empty, or whitespace!")
+                        End If
+                    Else
+                        Console.WriteLine("Input is not between 0 and 10!")
+                    End If
+                Else
+                    Console.WriteLine("Input is not a Integer!")
+                End If
+
+            Else
+                Console.WriteLine("Input is null, empty, or whitespace!")
+            End If
+
+            Console.WriteLine($"{nl}{nl}Continue with any key...")
+            Console.ReadKey()
+            Console.Clear()
+
+        Loop While fin = False
 
 #End Region
 
