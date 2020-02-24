@@ -375,11 +375,50 @@ Module Program
                     ' Schreiben Sie eine Funktion, die ihnen alle möglichen Kombinationen des Zahlenschlosses (auf
                     ' der Konsole) ausgibt.
 
-                    'Console.WriteLine($"{nl}{nl}############# Exercise 9: #############{nl}")
+                    Console.WriteLine($"{nl}{nl}############# Exercise 9: #############{nl}")
 
-                    'Console.WriteLine($"{nl}{nl}Continue with any key...")
-                    'Console.ReadKey()
-                    'Console.Clear()
+                    Dim firstNumb As Integer = 2
+                    Dim secondNumb As Integer = 12
+                    Dim thirdNumb As Integer = 36
+                    Dim fourthNumb As Integer = 23
+                    Dim cracked As Boolean = False
+
+                    For firstIndex = 0 To 36
+
+                        If cracked Then
+                            Exit For
+                        End If
+
+                        For secondIndex = 0 To 36
+
+                            If cracked Then
+                                Exit For
+                            End If
+
+                            For thirdIndex = 0 To 36
+
+                                If cracked Then
+                                    Exit For
+                                End If
+
+                                For fourthIndex = 0 To 36
+
+                                    If firstIndex = firstNumb And secondIndex = secondNumb And thirdIndex = thirdNumb And fourthIndex = fourthNumb Then
+                                        Console.WriteLine($"{nl}Congratulation!")
+                                        Console.WriteLine($"You cracked the right code: ""{firstIndex}"" - ""{secondIndex}"" - ""{thirdIndex}"" -""{fourthNumb}""")
+                                        cracked = True
+                                        Exit For
+                                    Else
+                                        Console.WriteLine($"{firstIndex} - {secondIndex} - {thirdIndex} - {fourthIndex}")
+                                    End If
+                                Next
+                            Next
+                        Next
+                    Next
+
+                    Console.WriteLine($"{nl}{nl}Continue with any key...")
+                    Console.ReadKey()
+                    Console.Clear()
 
 #End Region
                 Case "10"
