@@ -1,0 +1,11 @@
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\bin\Debug\netcoreapp3.1\4_Zahlenraten.exe
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\bin\Debug\netcoreapp3.1\4_Zahlenraten.deps.json
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\bin\Debug\netcoreapp3.1\4_Zahlenraten.runtimeconfig.json
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\bin\Debug\netcoreapp3.1\4_Zahlenraten.runtimeconfig.dev.json
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\bin\Debug\netcoreapp3.1\4_Zahlenraten.dll
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\bin\Debug\netcoreapp3.1\4_Zahlenraten.pdb
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\obj\Debug\netcoreapp3.1\4_Zahlenraten.AssemblyInfoInputs.cache
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\obj\Debug\netcoreapp3.1\4_Zahlenraten.AssemblyInfo.vb
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\obj\Debug\netcoreapp3.1\4_Zahlenraten.dll
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\obj\Debug\netcoreapp3.1\4_Zahlenraten.pdb
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\obj\Debug\netcoreapp3.1\4_Zahlenraten.vbprojAssemblyReference.cache
