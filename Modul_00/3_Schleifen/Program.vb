@@ -25,6 +25,7 @@ Module Program
             Console.WriteLine($"{vbTab}8) Exercise 8")
             Console.WriteLine($"{vbTab}9) Exercise 9")
             Console.WriteLine($"{vbTab}10) Exercise 10")
+            Console.WriteLine($"{vbTab}11) Exercise 11")
             Console.Write($"{nl}Choose Your Exercise by typing the number and press the Enter Key (To exit the application type ""exit""): ")
             exercise = Console.ReadLine()
 
@@ -476,11 +477,59 @@ Module Program
                     ' Sterne = i * 2 + 1
                     ' i = Nummer des Durchlaufs.
 
-                    'Console.WriteLine($"{nl}{nl}############# Exercise 11: #############")
+                    Console.WriteLine($"{nl}{nl}############# Exercise 11: #############")
 
-                    'Console.WriteLine($"{nl}{nl}Continue with any key...")
-                    'Console.ReadKey()
-                    'Console.Clear()
+                    Dim success As Boolean = False
+
+                    Do
+                        Console.Write($"{nl}Please enter the hight of the Christmas-Tree: ")
+                        Dim hightAsString As String = Console.ReadLine()
+                        Console.WriteLine()
+
+                        If Not String.IsNullOrEmpty(hightAsString) And Not String.IsNullOrWhiteSpace(hightAsString) Then
+
+                            Dim hight As Integer
+                            If Integer.TryParse(hightAsString, hight) Then
+                                If hightAsString > 0 Then
+
+                                    'Dim spaces As Integer = 15
+                                    Dim asterix As Integer = 1
+
+                                    For i = 0 To hight
+                                        For j = 0 To hight
+                                            Console.Write(" ")
+                                        Next
+
+                                        For j = 1 To asterix
+                                            Console.Write("* ")
+                                        Next
+
+                                        Console.WriteLine()
+                                        asterix += 1
+                                        hight -= 1
+
+                                    Next
+
+                                    success = True
+
+                                Else
+                                    Console.WriteLine("Input is not a positive number!")
+                                    Console.WriteLine($"Input: ""{hight}""")
+                                End If
+                            Else
+                                Console.WriteLine("Input is not an Integer!")
+                                Console.WriteLine($"Input: ""{hightAsString}""")
+                            End If
+                        Else
+                            Console.WriteLine("Input is null, empty, or whitespace!")
+
+                        End If
+
+                        Console.WriteLine($"{nl}{nl}Continue with any key...")
+                        Console.ReadKey()
+                        Console.Clear()
+
+                    Loop While Not success
 
 #End Region
                 Case "exit"
