@@ -424,27 +424,63 @@ Module Program
                 Case "10"
 #Region "10)"
 
-        ' 10. Erstellen Sie ein Programm, das das kleine Einmaleins ausgibt.
+                    ' 10. Erstellen Sie ein Programm, das das kleine Einmaleins ausgibt.
+
+                    Console.WriteLine($"{nl}{nl}############# Exercise 10: #############")
+
+                    Dim successfull = False
+
+                    Do
+                        Console.Write($"{nl}Please choose your multiplicator (from 1 to 10): ")
+                        Dim multiplicatorAsString As String = Console.ReadLine()
+                        Console.WriteLine()
+
+                        ' Validate if input is null, empty or whitespace
+                        If Not String.IsNullOrEmpty(multiplicatorAsString) And Not String.IsNullOrWhiteSpace(multiplicatorAsString) Then
+
+                            Dim multiplicator As Integer
+                            If Integer.TryParse(multiplicatorAsString, multiplicator) Then
+
+                                If multiplicator >= 1 And multiplicator <= 10 Then
+                                    For i = 1 To 10
+                                        Console.WriteLine($"{i} * {multiplicator} = {i * multiplicator}")
+                                    Next
+                                    successfull = True
+                                Else
+                                    Console.WriteLine("Input is not between 1 and 10!")
+                                    Console.WriteLine($"Multiplicator: ""{multiplicator}""")
+                                End If
+                            Else
+                                Console.WriteLine("Input is not an Integer!")
+                            End If
+
+                        Else
+                            Console.WriteLine("Input is null, empty, or whitespace!")
+                        End If
+
+                        Console.WriteLine($"{nl}{nl}Continue with any key...")
+                        Console.ReadKey()
+                        Console.Clear()
+
+                    Loop While Not successfull
 
 #End Region
                 Case "11"
 #Region "11)"
 
 
-        ' 11. Geben Sie einen Christbaum aus. Der Benutzer kann die Höhe wählen:
-        ' zb.: Höhe 10
-        ' Die Formel für den Baum ist
-        ' Leerzeichenanzahl Links / Rechts = Höhe – 1 – i
-        ' Sterne = i * 2 + 1
-        ' i = Nummer des Durchlaufs.
+                    ' 11. Geben Sie einen Christbaum aus. Der Benutzer kann die Höhe wählen:
+                    ' zb.: Höhe 10
+                    ' Die Formel für den Baum ist
+                    ' Leerzeichenanzahl Links / Rechts = Höhe – 1 – i
+                    ' Sterne = i * 2 + 1
+                    ' i = Nummer des Durchlaufs.
 
-        'Console.WriteLine($"{nl}{nl}############# Exercise 10: #############")
+                    'Console.WriteLine($"{nl}{nl}############# Exercise 11: #############")
 
-
-
-        'Console.WriteLine($"{nl}{nl}Continue with any key...")
-        'Console.ReadKey()
-        'Console.Clear()
+                    'Console.WriteLine($"{nl}{nl}Continue with any key...")
+                    'Console.ReadKey()
+                    'Console.Clear()
 
 #End Region
                 Case "exit"
