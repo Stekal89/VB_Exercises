@@ -10,7 +10,7 @@ Module Program
         'Zahlenraten:
         'Programmieren Sie ein Spiel, bei dem der Benutzer eine Zufallszahl zwischen 1 und 6 erraten muss.
 
-        Dim success As Boolean = False
+        Dim wonGames As Integer = 0
 
         Do
             Dim guesTry As Integer = 1
@@ -44,20 +44,22 @@ Module Program
                             Console.WriteLine("You win. Numbers are matching!")
                             Console.ForegroundColor = ConsoleColor.Gray
 
-                            '5. Erweitern Sie ihr Programm, sodass es solange weitermacht, bis der Benutzer ein mal
-                            'gewonnen hat.
-                            success = True
+                            '6. Erweitern Sie ihr Programm, sodass der Benutzer 6 mal gewinnen muss bevor das Spiel
+                            'gewonnen ist.
+                            wonGames += 1
                         Else
                             Console.ForegroundColor = ConsoleColor.Red
                             Console.WriteLine("You loose. Numbers are not matching!")
                             Console.ForegroundColor = ConsoleColor.Gray
                         End If
 
+                        Console.WriteLine($"{nl}Won-Games: ""{wonGames}""")
 
-                        '6. Erweitern Sie ihr Programm, sodass der Benutzer 6 mal gewinnen muss bevor das Spiel
-                        'gewonnen ist.
-
-                        '7. Benutzen Sie Console.Clear() an einer geeigneten Stelle um die alten eingaben zu löschen.
+                        If wonGames = 6 Then
+                            Console.ForegroundColor = ConsoleColor.DarkGreen
+                            Console.WriteLine($"Game is over, you won successfully for {wonGames}")
+                            Console.ForegroundColor = ConsoleColor.Gray
+                        End If
 
                     Else
                         Console.WriteLine("Input is not between 1 and 6!")
@@ -74,11 +76,12 @@ Module Program
 
             End If
 
+            '7. Benutzen Sie Console.Clear() an einer geeigneten Stelle um die alten eingaben zu löschen.
             Console.WriteLine($"{nl}{nl}Continue with any key...")
             Console.ReadKey()
             Console.Clear()
 
-        Loop While Not success
+        Loop While wonGames < 6
 
     End Sub
 End Module
