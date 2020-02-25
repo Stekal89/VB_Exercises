@@ -8,4 +8,3 @@ C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\obj
 C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\obj\Debug\netcoreapp3.1\4_Zahlenraten.AssemblyInfo.vb
 C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\obj\Debug\netcoreapp3.1\4_Zahlenraten.dll
 C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\obj\Debug\netcoreapp3.1\4_Zahlenraten.pdb
-C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\4_Zahlenraten\obj\Debug\netcoreapp3.1\4_Zahlenraten.vbprojAssemblyReference.cache
