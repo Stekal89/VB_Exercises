@@ -43,14 +43,16 @@ Module Program
                             Console.ForegroundColor = ConsoleColor.DarkGreen
                             Console.WriteLine("You win. Numbers are matching!")
                             Console.ForegroundColor = ConsoleColor.Gray
+
+                            '5. Erweitern Sie ihr Programm, sodass es solange weitermacht, bis der Benutzer ein mal
+                            'gewonnen hat.
+                            success = True
                         Else
                             Console.ForegroundColor = ConsoleColor.Red
                             Console.WriteLine("You loose. Numbers are not matching!")
                             Console.ForegroundColor = ConsoleColor.Gray
                         End If
 
-                        '5. Erweitern Sie ihr Programm, sodass es solange weitermacht, bis der Benutzer ein mal
-                        'gewonnen hat.
 
                         '6. Erweitern Sie ihr Programm, sodass der Benutzer 6 mal gewinnen muss bevor das Spiel
                         'gewonnen ist.
@@ -64,7 +66,7 @@ Module Program
 
                 Else
                     Console.WriteLine("Input is not an Integer!")
-                    Console.WriteLine($"Input: ""{userNumb}""")
+                    Console.WriteLine($"Input: ""{userNumbAsString}""")
                 End If
 
             Else
