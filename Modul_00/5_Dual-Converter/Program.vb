@@ -19,9 +19,9 @@ Module Program
     End Function
 #End Region
 
-    Sub Main(args As String())
+    Public nl As String = vbCrLf
 
-        Dim nl As String = vbCrLf
+    Sub Main(args As String())
 
         'Dualzahlen:
 
@@ -54,65 +54,42 @@ Module Program
 
             Dim input As Integer? = ConvertStringIntoInteger(inputAsString)
 
-            If input IsNot Nothing Then
+            If input = 0 Then
+                input = Nothing
+            End If
 
-                ' Convert to Binary
-                Dim converted As Boolean = False
-                Dim rest As Integer
-                Dim res As Double
-                Dim binList As New Stack(Of Integer)
+            '2) Gliedern Sie die Berechnungsmethode in eine Funktion aus, die eine int zahl übernimmt und eine
+            'Binärzahl (in Form eines Strings) zurückgibt.
+            Dim binaryOutput As String = GetBinarayResult(input)
 
-                Do
-                    ' Get binary result (one index)
-                    rest = input Mod 2
-
-                    ' Get result of the calculation, rounded down, because we only need the first
-                    res = input / 2
-                    res = Math.Floor(res)
-
-                    'Console.WriteLine($"{input} / 2 = {res} ""{rest} Rest""")
-
-                    ' Add result to stack of binaries
-                    binList.Push(rest)
-
-                    ' overwrite the input with the result to calculate the next binary
-                    input = CInt(res)
-                Loop While input > 0
-
-                ' To group the result in groups of four we need to add "0" into the stacks
-                Dim zeroNeeded As Integer = binList.Count Mod 4
-                If zeroNeeded <> 4 Then
-
-                    For i = 1 To 4 - zeroNeeded
-                        binList.Push(0)
-                    Next
-
-                End If
-
-                Dim endResult As String = Nothing
-                For i = 0 To binList.Count() - 1
-
-                    ' Group the result in groups of four
-                    If Not String.IsNullOrEmpty(endResult) Then
-
-                        Dim withoutWhiteSpaces As New String(endResult.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray())
-
-                        If withoutWhiteSpaces.Count Mod 4 = 0 Then
-                            endResult += " "
-                        End If
-                    End If
-
-                    ' Add result to the variable, which will be needed to display the endresult on the console.
-                    endResult += binList.Pop().ToString()
-                Next
-
-                Console.WriteLine($"{nl}EndResult: ""{endResult}""")
+            If Not String.IsNullOrEmpty(binaryOutput) Then
+                Console.WriteLine($"Binary: ""{binaryOutput}""")
 
             Else
                 ColorRed()
-                Console.WriteLine("Cannot convert INPUT into INTEGER!")
+                Console.WriteLine("Output variable for Binary (Type String) is NULL!")
                 ColorGray()
+            End If
 
+            'Bonusaufgaben:
+            '3) Schreiben Sie eine weitere Funktion zur Umrechnung von Dezimalzahlen in Oktalzahlen.
+            'Gehen Sie dazu gleich vor wie bei der Konvertierung in Dualzahlen. Ersetzen Sie nur den
+            'Schritt "Divison durch 2" durch den Schritt "Divison durch 8".
+            '100 / 8 = 12 R: 4
+            '12 / 8 = 1 R: 4
+            '1 / 8 = 0 R: 1
+            '1 * 8^2 + 4 * 8^1 + 4 * 8^0 = 100
+            '64 + 32 + 4 = 100
+
+            Dim octaOutput = GetOctaResult(input)
+
+            If Not String.IsNullOrEmpty(octaOutput) Then
+                Console.WriteLine($"Octa:   ""{octaOutput}""")
+
+            Else
+                ColorRed()
+                Console.WriteLine("Output variable for Okta (Type String) ins NULL!")
+                ColorGray()
             End If
 
             Console.WriteLine($"{nl}{nl}Continue With any key...")
@@ -123,19 +100,6 @@ Module Program
         Loop While inputAsString <> "Exit"
 
 
-
-        '2) Gliedern Sie die Berechnungsmethode in eine Funktion aus, die eine int zahl übernimmt und eine
-        'Binärzahl (in Form eines Strings) zurückgibt.
-
-        'Bonusaufgaben:
-        '3) Schreiben Sie eine weitere Funktion zur Umrechnung von Dezimalzahlen in Oktalzahlen.
-        'Gehen Sie dazu gleich vor wie bei der Konvertierung in Dualzahlen. Ersetzen Sie nur den
-        'Schritt "Divison durch 2" durch den Schritt "Divison durch 8".
-        '100 / 8 = 12 R: 4
-        '12 / 8 = 1 R: 4
-        '1 / 8 = 0 R: 1
-        '1 * 8^2 + 4 * 8^1 + 4 * 8^0 = 100
-        '64 + 32 + 4 = 100
 
         '3) Generalisieren Sie ihre Funktion und ermöglichen Sie außerdem die Berechnung von
         'Hexadezimalzahlen
@@ -175,6 +139,136 @@ Module Program
         End If
 
         Return Nothing
+
+    End Function
+
+    ''' <summary>
+    ''' Converts Integer into binary in groups of four.
+    ''' </summary>
+    ''' <param name="input">input as Integer</param>
+    ''' <returns>connverted, sorted binary</returns>
+    Function GetBinarayResult(input As Integer?) As String
+
+        If input IsNot Nothing Then
+
+            Dim binList As Stack(Of Integer) = GetRestOfIntegerInStack(input, 2)
+
+            If binList IsNot Nothing Then
+
+                Return OrderAndGroupRestResult(binList, 4)
+
+            End If
+
+        Else
+            ColorRed()
+            Console.WriteLine("Cannot convert INPUT into INTEGER!")
+            ColorGray()
+
+        End If
+
+        Return Nothing
+
+    End Function
+
+    ''' <summary>
+    ''' Converts Integer into octa in groups of three
+    ''' </summary>
+    ''' <param name="input">input as Integer</param>
+    ''' <returns>converted, sorted octa</returns>
+    Function GetOctaResult(input As Integer?) As String
+
+        If input IsNot Nothing Then
+            Dim octaList As Stack(Of Integer) = GetRestOfIntegerInStack(input, 8)
+
+            If octaList IsNot Nothing Then
+
+                Dim endResult As String = OrderAndGroupRestResult(octaList, 3)
+                Return endResult.TrimStart("0").TrimStart(" ")
+
+            End If
+        Else
+            ColorRed()
+            Console.WriteLine("Cannot convert INPUT into INTEGER!")
+            ColorGray()
+        End If
+
+        Return Nothing
+
+    End Function
+
+    ''' <summary>
+    ''' Calculates the Rest of the given parameter, depends on the dividor, to get a wrong sorted stack of Integer -> Binaries, Octa, HEX
+    ''' </summary>
+    ''' <param name="input">input as integer</param>
+    ''' <param name="dividor">dividor, which will be used to get the rest</param>
+    ''' <returns>wrong sorted stack of Integer</returns>
+    Function GetRestOfIntegerInStack(input As Integer, dividor As Integer) As Stack(Of Integer)
+
+        ' Convert to Binary, Octa, or HEX
+        Dim converted As Boolean = False
+        Dim rest As Integer
+        Dim result As Double
+        Dim restList As New Stack(Of Integer)
+
+        Do
+            ' Get rest result (one index)
+            rest = input Mod dividor
+
+            ' Get result of the calculation, rounded down, because we only need the first
+            result = input / dividor
+            result = Math.Floor(result)
+
+            'Console.WriteLine($"{input} / 2 = {res} ""{rest} Rest""")
+
+            ' Add result to stack of Binaries, Octa, or HEX
+            restList.Push(rest)
+
+            ' overwrite the input with the result to calculate the next rest result
+            input = CInt(result)
+        Loop While input > 0
+
+        Return restList
+
+    End Function
+
+    ''' <summary>
+    ''' Groups Rest-Result (Stack) into group of "groupLength" e.g. 4: 
+    ''' -> 1234 1234
+    ''' Gets the needed result in correct order into a string variable and returns it afterwards.
+    ''' </summary>
+    ''' <param name="restList">Stack of calculated Rest of the divisions</param>
+    ''' <param name="groupLength">lenght of one displayed group: e.g. 1111 4444</param>
+    ''' <returns></returns>
+    Function OrderAndGroupRestResult(restList As Stack(Of Integer), groupLength As Integer) As String
+
+        ' To group the result in groups of four we need to add "0" into the stacks
+        Dim zeroNeeded As Integer = restList.Count Mod groupLength
+        If zeroNeeded <> groupLength Then
+
+            For i = 1 To groupLength - zeroNeeded
+                restList.Push(0)
+            Next
+
+        End If
+
+        Dim sortedResult As String = Nothing
+        For i = 0 To restList.Count() - 1
+
+            ' Group the result in groups of four
+            If Not String.IsNullOrEmpty(sortedResult) Then
+
+                Dim withoutWhiteSpaces As New String(sortedResult.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray())
+
+                If withoutWhiteSpaces.Count Mod groupLength = 0 Then
+                    sortedResult += " "
+                End If
+            End If
+
+            ' Add result to the variable, which will be needed to display the endresult on the console.
+            sortedResult += restList.Pop().ToString()
+        Next
+
+        Return sortedResult
 
     End Function
 
