@@ -1,0 +1,11 @@
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_01\6_Übungsaufgaben Modul 1\bin\Debug\netcoreapp3.1\6_Übungsaufgaben Modul 1.exe
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_01\6_Übungsaufgaben Modul 1\bin\Debug\netcoreapp3.1\6_Übungsaufgaben Modul 1.deps.json
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_01\6_Übungsaufgaben Modul 1\bin\Debug\netcoreapp3.1\6_Übungsaufgaben Modul 1.runtimeconfig.json
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_01\6_Übungsaufgaben Modul 1\bin\Debug\netcoreapp3.1\6_Übungsaufgaben Modul 1.runtimeconfig.dev.json
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_01\6_Übungsaufgaben Modul 1\bin\Debug\netcoreapp3.1\6_Übungsaufgaben Modul 1.dll
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_01\6_Übungsaufgaben Modul 1\bin\Debug\netcoreapp3.1\6_Übungsaufgaben Modul 1.pdb
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_01\6_Übungsaufgaben Modul 1\obj\Debug\netcoreapp3.1\6_Übungsaufgaben Modul 1.vbprojAssemblyReference.cache
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_01\6_Übungsaufgaben Modul 1\obj\Debug\netcoreapp3.1\6_Übungsaufgaben Modul 1.AssemblyInfoInputs.cache
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_01\6_Übungsaufgaben Modul 1\obj\Debug\netcoreapp3.1\6_Übungsaufgaben Modul 1.AssemblyInfo.vb
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_01\6_Übungsaufgaben Modul 1\obj\Debug\netcoreapp3.1\6_Übungsaufgaben Modul 1.dll
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_01\6_Übungsaufgaben Modul 1\obj\Debug\netcoreapp3.1\6_Übungsaufgaben Modul 1.pdb
