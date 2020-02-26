@@ -43,6 +43,9 @@ Module Program
         '64 + 32 + 4 = 100
 
         Dim inputAsString As String
+        Dim binaryOutput As String = Nothing
+        Dim octaOutput As String = Nothing
+        Dim hexOutput As String = Nothing
 
         Do
             Console.WriteLine($"{nl}{nl}{vbTab}# # # # D U A L - C O N V E R T E R # # # #{nl}")
@@ -60,10 +63,14 @@ Module Program
 
             '2) Gliedern Sie die Berechnungsmethode in eine Funktion aus, die eine int zahl übernimmt und eine
             'Binärzahl (in Form eines Strings) zurückgibt.
-            Dim binaryOutput As String = GetBinarayResult(input)
+            binaryOutput = GetBinarayResult(input)
+
+            If input IsNot Nothing Then
+                Console.WriteLine($"{nl}Decimal: ""{input}""")
+            End If
 
             If Not String.IsNullOrEmpty(binaryOutput) Then
-                Console.WriteLine($"Binary: ""{binaryOutput}""")
+                Console.WriteLine($"Binary:  ""{binaryOutput}""")
 
             Else
                 ColorRed()
@@ -81,10 +88,10 @@ Module Program
             '1 * 8^2 + 4 * 8^1 + 4 * 8^0 = 100
             '64 + 32 + 4 = 100
 
-            Dim octaOutput = GetOctaResult(input)
+            octaOutput = GetOctaResult(input)
 
             If Not String.IsNullOrEmpty(octaOutput) Then
-                Console.WriteLine($"Octa:   ""{octaOutput}""")
+                Console.WriteLine($"Octa:    ""{octaOutput}""")
 
             Else
                 ColorRed()
@@ -92,21 +99,27 @@ Module Program
                 ColorGray()
             End If
 
+            '3) Generalisieren Sie ihre Funktion und ermöglichen Sie außerdem die Berechnung von
+            'Hexadezimalzahlen
+            'Achtung ! in Visual Basic wird eine ganzzahlige Division mit dem „\“ (Backslash) – Operator
+            'durchgeführt.
+
+            hexOutput = GetHEXResult(input)
+
+            If Not String.IsNullOrEmpty(hexOutput) Then
+                Console.WriteLine($"HEX:     ""{hexOutput}""")
+
+            Else
+                ColorRed()
+                Console.WriteLine("Output variable for HEX (Type String) ins NULL!")
+                ColorGray()
+            End If
+
             Console.WriteLine($"{nl}{nl}Continue With any key...")
             Console.ReadKey()
             Console.Clear()
 
-
         Loop While inputAsString <> "Exit"
-
-
-
-        '3) Generalisieren Sie ihre Funktion und ermöglichen Sie außerdem die Berechnung von
-        'Hexadezimalzahlen
-        'Achtung ! in Visual Basic wird eine ganzzahlige Division mit dem „\“ (Backslash) – Operator
-        'durchgeführt.
-
-
 
     End Sub
 
@@ -197,6 +210,30 @@ Module Program
     End Function
 
     ''' <summary>
+    ''' Converrts Integer into HEX in groups of four
+    ''' </summary>
+    ''' <param name="input">input as Integer</param>
+    ''' <returns>converted, sorted HEX</returns>
+    Function GetHEXResult(input As Integer?) As String
+        If input IsNot Nothing Then
+            Dim hexList As Stack(Of Integer) = GetRestOfIntegerInStack(input, 16)
+
+            If hexList IsNot Nothing Then
+
+                Dim endResult As String = OrderAndGroupRestResult(hexList, 4)
+                Return endResult.TrimStart("0").TrimStart(" ")
+
+            End If
+        Else
+            ColorRed()
+            Console.WriteLine("Cannot convert INPUT into INTEGER!")
+            ColorGray()
+        End If
+
+        Return Nothing
+    End Function
+
+    ''' <summary>
     ''' Calculates the Rest of the given parameter, depends on the dividor, to get a wrong sorted stack of Integer -> Binaries, Octa, HEX
     ''' </summary>
     ''' <param name="input">input as integer</param>
@@ -238,7 +275,7 @@ Module Program
     ''' </summary>
     ''' <param name="restList">Stack of calculated Rest of the divisions</param>
     ''' <param name="groupLength">lenght of one displayed group: e.g. 1111 4444</param>
-    ''' <returns></returns>
+    ''' <returns>grouped and sorted result in string</returns>
     Function OrderAndGroupRestResult(restList As Stack(Of Integer), groupLength As Integer) As String
 
         ' To group the result in groups of four we need to add "0" into the stacks
@@ -252,6 +289,7 @@ Module Program
         End If
 
         Dim sortedResult As String = Nothing
+        Dim actualRest As Integer
         For i = 0 To restList.Count() - 1
 
             ' Group the result in groups of four
@@ -264,8 +302,26 @@ Module Program
                 End If
             End If
 
-            ' Add result to the variable, which will be needed to display the endresult on the console.
-            sortedResult += restList.Pop().ToString()
+            actualRest = restList.Pop()
+            If actualRest < 10 Then
+                ' Add result to the variable, which will be needed to display the endresult on the console.
+                sortedResult += actualRest.ToString()
+            Else
+                Select Case actualRest
+                    Case 10
+                        sortedResult += "A"
+                    Case 11
+                        sortedResult += "B"
+                    Case 12
+                        sortedResult += "C"
+                    Case 13
+                        sortedResult += "D"
+                    Case 14
+                        sortedResult += "E"
+                    Case 15
+                        sortedResult += "F"
+                End Select
+            End If
         Next
 
         Return sortedResult
