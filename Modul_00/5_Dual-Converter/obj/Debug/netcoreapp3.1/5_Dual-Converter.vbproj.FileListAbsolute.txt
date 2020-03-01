@@ -4,8 +4,8 @@ C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\5_Dual-Converter\
 C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\5_Dual-Converter\bin\Debug\netcoreapp3.1\5_Dual-Converter.runtimeconfig.dev.json
 C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\5_Dual-Converter\bin\Debug\netcoreapp3.1\5_Dual-Converter.dll
 C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\5_Dual-Converter\bin\Debug\netcoreapp3.1\5_Dual-Converter.pdb
+C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\5_Dual-Converter\obj\Debug\netcoreapp3.1\5_Dual-Converter.vbprojAssemblyReference.cache
 C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\5_Dual-Converter\obj\Debug\netcoreapp3.1\5_Dual-Converter.AssemblyInfoInputs.cache
 C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\5_Dual-Converter\obj\Debug\netcoreapp3.1\5_Dual-Converter.AssemblyInfo.vb
 C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\5_Dual-Converter\obj\Debug\netcoreapp3.1\5_Dual-Converter.dll
 C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\5_Dual-Converter\obj\Debug\netcoreapp3.1\5_Dual-Converter.pdb
-C:\Users\tstek\OneDrive\Documents\Github\VB_Exercises\Modul_00\5_Dual-Converter\obj\Debug\netcoreapp3.1\5_Dual-Converter.vbprojAssemblyReference.cache

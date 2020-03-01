@@ -11,7 +11,9 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "3_Schleifen", "3_Schleifen\
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "4_Zahlenraten", "4_Zahlenraten\4_Zahlenraten.vbproj", "{EB1D2230-9A66-4CB4-971B-CD30F7A2EC40}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "5_Dual-Converter", "5_Dual-Converter\5_Dual-Converter.vbproj", "{45DB2ED0-E15A-4F03-AD92-379AE865FEB7}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "5_Dual-Converter", "5_Dual-Converter\5_Dual-Converter.vbproj", "{45DB2ED0-E15A-4F03-AD92-379AE865FEB7}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UTests_5_Dual-Converter", "UTests_5_Dual-Converter\UTests_5_Dual-Converter.vbproj", "{521437E7-21C9-48E2-A09B-91A00FDDB941}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{45DB2ED0-E15A-4F03-AD92-379AE865FEB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45DB2ED0-E15A-4F03-AD92-379AE865FEB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45DB2ED0-E15A-4F03-AD92-379AE865FEB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{521437E7-21C9-48E2-A09B-91A00FDDB941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{521437E7-21C9-48E2-A09B-91A00FDDB941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{521437E7-21C9-48E2-A09B-91A00FDDB941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{521437E7-21C9-48E2-A09B-91A00FDDB941}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

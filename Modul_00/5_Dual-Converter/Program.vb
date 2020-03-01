@@ -1,6 +1,6 @@
 Imports System
 
-Module Program
+Public Module Program
 
 #Region "Help-Functions"
     Function ColorRed()
@@ -43,9 +43,9 @@ Module Program
         '64 + 32 + 4 = 100
 
         Dim inputAsString As String
-        Dim binaryOutput As String = Nothing
-        Dim octaOutput As String = Nothing
-        Dim hexOutput As String = Nothing
+        Dim binaryOutput As String
+        Dim octaOutput As String
+        Dim hexOutput As String
 
         Do
             Console.WriteLine($"{nl}{nl}{vbTab}# # # # D U A L - C O N V E R T E R # # # #{nl}")
@@ -131,7 +131,7 @@ Module Program
     ''' <param name="input">value as string</param>
     ''' <returns>success -> string converted as integer
     '''          failure -> "-1"</returns>
-    Function ConvertStringIntoInteger(input As String) As Integer
+    Public Function ConvertStringIntoInteger(input As String) As Integer?
 
         If Not String.IsNullOrEmpty(input) And Not String.IsNullOrWhiteSpace(input) Then
 
@@ -160,7 +160,7 @@ Module Program
     ''' </summary>
     ''' <param name="input">input as Integer</param>
     ''' <returns>connverted, sorted binary</returns>
-    Function GetBinarayResult(input As Integer?) As String
+    Public Function GetBinarayResult(input As Integer?) As String
 
         If input IsNot Nothing Then
 
@@ -188,7 +188,7 @@ Module Program
     ''' </summary>
     ''' <param name="input">input as Integer</param>
     ''' <returns>converted, sorted octa</returns>
-    Function GetOctaResult(input As Integer?) As String
+    Public Function GetOctaResult(input As Integer?) As String
 
         If input IsNot Nothing Then
             Dim octaList As Stack(Of Integer) = GetRestOfIntegerInStack(input, 8)
@@ -214,7 +214,7 @@ Module Program
     ''' </summary>
     ''' <param name="input">input as Integer</param>
     ''' <returns>converted, sorted HEX</returns>
-    Function GetHEXResult(input As Integer?) As String
+    Public Function GetHEXResult(input As Integer?) As String
         If input IsNot Nothing Then
             Dim hexList As Stack(Of Integer) = GetRestOfIntegerInStack(input, 16)
 
@@ -239,7 +239,7 @@ Module Program
     ''' <param name="input">input as integer</param>
     ''' <param name="dividor">dividor, which will be used to get the rest</param>
     ''' <returns>wrong sorted stack of Integer</returns>
-    Function GetRestOfIntegerInStack(input As Integer, dividor As Integer) As Stack(Of Integer)
+    Public Function GetRestOfIntegerInStack(input As Integer, dividor As Integer) As Stack(Of Integer)
 
         ' Convert to Binary, Octa, or HEX
         Dim converted As Boolean = False
@@ -276,7 +276,7 @@ Module Program
     ''' <param name="restList">Stack of calculated Rest of the divisions</param>
     ''' <param name="groupLength">lenght of one displayed group: e.g. 1111 4444</param>
     ''' <returns>grouped and sorted result in string</returns>
-    Function OrderAndGroupRestResult(restList As Stack(Of Integer), groupLength As Integer) As String
+    Public Function OrderAndGroupRestResult(restList As Stack(Of Integer), groupLength As Integer) As String
 
         ' To group the result in groups of four we need to add "0" into the stacks
         Dim zeroNeeded As Integer = restList.Count Mod groupLength
