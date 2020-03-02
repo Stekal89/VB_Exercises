@@ -11,7 +11,7 @@ Namespace UTests_5_Dual_Converter
 #Region "ConvertStringIntoInteger"
 
         <TestMethod>
-        Sub T001_ConvertStringIntoInteger_NullOrEmpty_CO()
+        Sub T001_ConvertStringIntoInteger_Null_CO()
             Dim input As String = Nothing
             Const expected As String = "Input is null, empty, or whitespace!"
 
@@ -31,7 +31,7 @@ Namespace UTests_5_Dual_Converter
         End Sub
 
         <TestMethod>
-        Sub T002_ConvertStringIntoInteger_NullOrEmpty_RV()
+        Sub T002_ConvertStringIntoInteger_Null_RV()
             Dim input As String = Nothing
             Dim returnedNumb = dualConverter.ConvertStringIntoInteger(Nothing)
 
@@ -167,7 +167,6 @@ Namespace UTests_5_Dual_Converter
             End Using
         End Sub
 
-
         <TestMethod>
         Sub T009_ConvertStringToInteger_ValidInput_RV()
             Const expected As Integer = 132
@@ -183,10 +182,165 @@ Namespace UTests_5_Dual_Converter
 
 #End Region
 
-#Region ""
+#Region "GetRestOfIntegerInStack"
+
+        Const toCalculate As Integer = 123456
+
+        <TestMethod>
+        Sub T010_GetRestOfIntegerInStack_ValidInput_Binary_RV()
+            Dim expected As Stack(Of Integer) = New Stack(Of Integer)({0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1})
+            Dim stackOfBinaries As Stack(Of Integer) = dualConverter.GetRestOfIntegerInStack(toCalculate, 2)
+
+            Dim expectedAsString As String
+            For i = 1 To expected.Count()
+                expectedAsString += expected.Pop().ToString()
+            Next
+
+            Dim stackOfBinariesAsString As String
+            For i = 1 To stackOfBinaries.Count()
+                stackOfBinariesAsString += stackOfBinaries.Pop().ToString()
+            Next
+
+            Trace.WriteLine("Verify Return-Value:")
+            Trace.WriteLine($"Input: ""{toCalculate}""")
+            Trace.WriteLine($"Expected: ""{expectedAsString}""")
+            Trace.WriteLine($"Return-Value: ""{stackOfBinariesAsString}""")
+
+            Assert.AreEqual(expectedAsString, stackOfBinariesAsString, "Wrong result returned fron the Function: ""GetRestOfIntegerInStack""")
+        End Sub
+
+        <TestMethod>
+        Sub T011_GetRestOfIntegerInStack_ValidInput_Octa_RV()
+            Dim expected As Stack(Of Integer) = New Stack(Of Integer)({0, 0, 1, 1, 6, 3})
+            Dim stackOfOctas As Stack(Of Integer) = dualConverter.GetRestOfIntegerInStack(toCalculate, 8)
+
+            Dim expectedAsString As String
+            For i = 1 To expected.Count()
+                expectedAsString += expected.Pop().ToString()
+            Next
+
+            Dim stackOfOctasAsString As String
+            For i = 1 To stackOfOctas.Count()
+                stackOfOctasAsString += stackOfOctas.Pop().ToString()
+            Next
+
+            Trace.WriteLine("Verify Return-Value:")
+            Trace.WriteLine($"Input: ""{toCalculate}""")
+            Trace.WriteLine($"Expected: ""{expectedAsString}""")
+            Trace.WriteLine($"Return-Value: ""{stackOfOctasAsString}""")
+
+            Assert.AreEqual(expectedAsString, stackOfOctasAsString, "Wrong result returned fron the Function: ""GetRestOfIntegerInStack""")
+        End Sub
+
+        <TestMethod>
+        Sub T012_GetRestOfIntegerInStack_ValidInput_HEX_RV()
+            Dim expected As Stack(Of Integer) = New Stack(Of Integer)({0, 4, 2, 14, 1})
+            Dim stackOfHEX As Stack(Of Integer) = dualConverter.GetRestOfIntegerInStack(toCalculate, 16)
+
+            Dim expectedAsString As String
+            For i = 1 To expected.Count()
+                expectedAsString += expected.Pop().ToString()
+            Next
+
+            Dim stackOfHEXAsString As String
+            For i = 1 To stackOfHEX.Count()
+                stackOfHEXAsString += stackOfHEX.Pop().ToString()
+            Next
+
+            Trace.WriteLine("Verify Return-Value:")
+            Trace.WriteLine($"Input: ""{toCalculate}""")
+            Trace.WriteLine($"Expected: ""{expectedAsString}""")
+            Trace.WriteLine($"Return-Value: ""{stackOfHEXAsString}""")
+
+            Assert.AreEqual(expectedAsString, stackOfHEXAsString, "Wrong result returned fron the Function: ""GetRestOfIntegerInStack""")
+        End Sub
 
 
 #End Region
+
+#Region "OrderAndGroupRestResult"
+
+        '<TestMethod>
+        'Sub T013_OrderAndGroupRestResult_ValidInput_RV()
+
+        'End Sub
+
+#End Region
+
+#Region "GetBinarayResult"
+
+        '<TestMethod>
+        'Sub T012_GetBinarayResult__NullCO()
+
+        'End Sub
+
+        '<TestMethod>
+        'Sub T013_GetBinarayResult_Null_RV()
+
+        'End Sub
+
+        '<TestMethod>
+        'Sub T014_GetBinarayResult_ValidInput_CO()
+
+        'End Sub
+
+        '<TestMethod>
+        'Sub T015_GetBinarayResult_ValidInput_RV()
+
+        'End Sub
+
+#End Region
+
+
+#Region "GetOctaResult"
+
+        '<TestMethod>
+        'Sub T016_GetOctaResult_NULL_CO()
+
+        'End Sub
+
+        '<TestMethod>
+        'Sub T017_GetOctaResult_NULL_RV()
+
+        'End Sub
+
+        '<TestMethod>
+        'Sub T018_GetOctaResult_ValidInput_CO()
+
+        'End Sub
+
+        '<TestMethod>
+        'Sub T020_GetOctaResult_ValidInput_RV()
+
+        'End Sub
+
+#End Region
+
+
+#Region "GetHEXResult"
+
+        '<TestMethod>
+        'Sub T021_GetHEXResult_NULL_CO()
+
+        'End Sub
+
+        '<TestMethod>
+        'Sub T022_GetHEXResult_NULL_RV()
+
+        'End Sub
+
+        '<TestMethod>
+        'Sub T023_GetHEXResult_ValidInput_CO()
+
+        'End Sub
+
+        '<TestMethod>
+        'Sub T024_GetHEXResult_ValidInput_RV()
+
+        'End Sub
+
+#End Region
+
 
     End Class
 End Namespace
