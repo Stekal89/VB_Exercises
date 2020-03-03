@@ -1,9 +1,9 @@
 Imports System
 
 Module Program
-    Dim rnd As Random = New Random
+    ReadOnly rnd As Random = New Random
 
-    Sub Main(args As String())
+    Sub Main()
 
         Dim nl As String = vbCrLf
 
@@ -13,8 +13,6 @@ Module Program
         Dim wonGames As Integer = 0
 
         Do
-            Dim guesTry As Integer = 1
-
             Console.WriteLine($"{nl}{nl}{vbTab}# # # # N U M B E R   G U E S S # # # #")
             '1. Lesen Sie dazu einen Wert von der Eingabeaufforderung ein.
             Console.Write("Please insert your number (1 - 6): ")

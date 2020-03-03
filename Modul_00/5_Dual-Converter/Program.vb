@@ -21,7 +21,7 @@ Public Module Program
 
     Public nl As String = vbCrLf
 
-    Sub Main(args As String())
+    Sub Main()
 
         'Dualzahlen:
 
@@ -242,7 +242,6 @@ Public Module Program
     Public Function GetRestOfIntegerInStack(input As Integer, dividor As Integer) As Stack(Of Integer)
 
         ' Convert to Binary, Octa, or HEX
-        Dim converted As Boolean = False
         Dim rest As Integer
         Dim result As Double
         Dim restList As New Stack(Of Integer)

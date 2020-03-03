@@ -1,7 +1,7 @@
 Imports System
 
 Module Program
-    Sub Main(args As String())
+    Sub Main()
 
         Dim nl As String = vbCrLf
 

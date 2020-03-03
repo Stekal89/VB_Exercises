@@ -1,4 +1,4 @@
-Imports System.IO
+﻿Imports System.IO
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Imports dualConverter = _5_Dual_Converter
 
@@ -6,7 +6,8 @@ Namespace UTests_5_Dual_Converter
     <TestClass>
     Public Class All_5_Dual_Converter_Tests
 
-        Dim nl As String = vbCrLf
+        ReadOnly nl As String = vbCrLf
+        Const toCalculate As Integer = 123456
 
 #Region "ConvertStringIntoInteger"
 
@@ -184,19 +185,17 @@ Namespace UTests_5_Dual_Converter
 
 #Region "GetRestOfIntegerInStack"
 
-        Const toCalculate As Integer = 123456
-
         <TestMethod>
         Sub T010_GetRestOfIntegerInStack_ValidInput_Binary_RV()
             Dim expected As Stack(Of Integer) = New Stack(Of Integer)({0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1})
             Dim stackOfBinaries As Stack(Of Integer) = dualConverter.GetRestOfIntegerInStack(toCalculate, 2)
 
-            Dim expectedAsString As String
+            Dim expectedAsString As String = ""
             For i = 1 To expected.Count()
                 expectedAsString += expected.Pop().ToString()
             Next
 
-            Dim stackOfBinariesAsString As String
+            Dim stackOfBinariesAsString As String = ""
             For i = 1 To stackOfBinaries.Count()
                 stackOfBinariesAsString += stackOfBinaries.Pop().ToString()
             Next
@@ -214,12 +213,12 @@ Namespace UTests_5_Dual_Converter
             Dim expected As Stack(Of Integer) = New Stack(Of Integer)({0, 0, 1, 1, 6, 3})
             Dim stackOfOctas As Stack(Of Integer) = dualConverter.GetRestOfIntegerInStack(toCalculate, 8)
 
-            Dim expectedAsString As String
+            Dim expectedAsString As String = ""
             For i = 1 To expected.Count()
                 expectedAsString += expected.Pop().ToString()
             Next
 
-            Dim stackOfOctasAsString As String
+            Dim stackOfOctasAsString As String = ""
             For i = 1 To stackOfOctas.Count()
                 stackOfOctasAsString += stackOfOctas.Pop().ToString()
             Next
@@ -237,12 +236,12 @@ Namespace UTests_5_Dual_Converter
             Dim expected As Stack(Of Integer) = New Stack(Of Integer)({0, 4, 2, 14, 1})
             Dim stackOfHEX As Stack(Of Integer) = dualConverter.GetRestOfIntegerInStack(toCalculate, 16)
 
-            Dim expectedAsString As String
+            Dim expectedAsString As String = ""
             For i = 1 To expected.Count()
                 expectedAsString += expected.Pop().ToString()
             Next
 
-            Dim stackOfHEXAsString As String
+            Dim stackOfHEXAsString As String = ""
             For i = 1 To stackOfHEX.Count()
                 stackOfHEXAsString += stackOfHEX.Pop().ToString()
             Next
@@ -260,87 +259,263 @@ Namespace UTests_5_Dual_Converter
 
 #Region "OrderAndGroupRestResult"
 
-        '<TestMethod>
-        'Sub T013_OrderAndGroupRestResult_ValidInput_RV()
+        <TestMethod>
+        Sub T013_OrderAndGroupRestResult_ValidInput_Binary_RV()
+            Dim stackOfBinaries As Stack(Of Integer) = New Stack(Of Integer)({0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1})
+            Dim binList As List(Of Integer) = stackOfBinaries.Reverse().ToList()
+            Dim expected As String = "0001 1110 0010 0100 0000"
+            Dim result As String = dualConverter.OrderAndGroupRestResult(stackOfBinaries, 4)
 
-        'End Sub
+            Dim inputAsString As String = ""
+            For Each bl In binList
+                inputAsString += $"{bl.ToString()}, "
+            Next
+
+            Trace.WriteLine("Verify Return-Value:")
+            Trace.WriteLine($"Input: ""{inputAsString.TrimEnd(",", " ")}""")
+            Trace.WriteLine($"Expected: ""{expected}""")
+            Trace.WriteLine($"Return-Value: ""{result}""")
+
+            Assert.AreEqual(expected, result, "Result of Function ""OrderAndGroupRestResult"" returned the wrong value!")
+        End Sub
+
+        <TestMethod>
+        Sub T014_OrderAndGroupRestResult_ValidInput_Octa_RV()
+            Dim stackOfOctas As Stack(Of Integer) = New Stack(Of Integer)({0, 0, 1, 1, 6, 3})
+            Dim octaList As List(Of Integer) = stackOfOctas.Reverse().ToList()
+            Dim expected As String = "000 361 100"
+            Dim result As String = dualConverter.OrderAndGroupRestResult(stackOfOctas, 3)
+
+
+
+            Dim inputAsString As String = ""
+            For Each ol In octaList
+                inputAsString += $"{ol.ToString()}, "
+            Next
+
+            Trace.WriteLine("Verify Return-Value:")
+            Trace.WriteLine($"Input: ""{inputAsString.TrimEnd(",", " ")}""")
+            Trace.WriteLine($"Expected: ""{expected}""")
+            Trace.WriteLine($"Return-Value: ""{result}""")
+
+            Assert.AreEqual(expected, result, "Result of Function ""OrderAndGroupRestResult"" returned the wrong value!")
+        End Sub
+
+        Sub T015_OrderAndGroupRestResult_ValidInput_HEX_RV()
+            Dim stackOfBinaries As Stack(Of Integer) = New Stack(Of Integer)({0, 4, 2, 14, 1})
+            Dim binList As List(Of Integer) = stackOfBinaries.Reverse().ToList()
+            Dim expected As String = "0001 E240"
+            Dim result As String = dualConverter.OrderAndGroupRestResult(stackOfBinaries, 4)
+
+            Dim inputAsString As String = ""
+            For Each bl In binList
+                inputAsString += bl.ToString()
+            Next
+
+            Trace.WriteLine("Verify Return-Value:")
+            Trace.WriteLine($"Input: ""{inputAsString}""")
+            Trace.WriteLine($"Expected: ""{expected}""")
+            Trace.WriteLine($"Return-Value: ""{result}""")
+
+            Assert.AreEqual(expected, result, "Result of Function ""OrderAndGroupRestResult"" returned the wrong value!")
+        End Sub
 
 #End Region
 
 #Region "GetBinarayResult"
 
-        '<TestMethod>
-        'Sub T012_GetBinarayResult__NullCO()
+        <TestMethod>
+        Sub T016_GetBinarayResult__Null_CO()
+            Dim expected As String = "Cannot convert INPUT into INTEGER!"
 
-        'End Sub
+            Using sw As New StringWriter()
 
-        '<TestMethod>
-        'Sub T013_GetBinarayResult_Null_RV()
+                Console.SetOut(sw)
+                dualConverter.GetBinarayResult(Nothing)
+                Dim output As String = sw.ToString().Trim()
 
-        'End Sub
+                Trace.WriteLine("Verify Console-Output:")
+                Trace.WriteLine($"Input: """" (NULL/Nothing)")
+                Trace.WriteLine($"Expected: ""{expected}""")
+                Trace.WriteLine($"Console-Output: ""{output}""")
 
-        '<TestMethod>
-        'Sub T014_GetBinarayResult_ValidInput_CO()
+                Assert.AreEqual(expected, output, "Wrong console output!")
+            End Using
+        End Sub
 
-        'End Sub
+        <TestMethod>
+        Sub T017_GetBinarayResult_Null_RV()
+            Dim result As String = dualConverter.GetBinarayResult(Nothing)
 
-        '<TestMethod>
-        'Sub T015_GetBinarayResult_ValidInput_RV()
+            Trace.WriteLine("Verify Return-Value:")
+            Trace.WriteLine($"Input: """" (Nothing/NULL)")
+            Trace.WriteLine($"Expected: """" (NULL, or EMPTY")
+            Trace.WriteLine($"Console-Output: ""{result}""")
 
-        'End Sub
+            Assert.IsTrue(String.IsNullOrEmpty(result), "Return-Value is Not NULL and Not EMPTY!")
+        End Sub
+
+        <TestMethod>
+        Sub T018_GetBinarayResult_ValidInput_CO()
+            Using sw As New StringWriter()
+
+                Console.SetOut(sw)
+                dualConverter.GetBinarayResult(toCalculate)
+                Dim output As String = sw.ToString().Trim()
+
+                Trace.WriteLine("Verify Console-Output:")
+                Trace.WriteLine($"Input: ""{toCalculate}""")
+                Trace.WriteLine("Expected: """" (NULL, or EMPTY)")
+                Trace.WriteLine($"Console-Output: ""{output}""")
+
+                Assert.IsTrue(String.IsNullOrEmpty(output), "Wrong console output!")
+            End Using
+        End Sub
+
+        <TestMethod>
+        Sub T019_GetBinarayResult_ValidInput_RV()
+            Const expected As String = "0001 1110 0010 0100 0000"
+            Dim result As String = dualConverter.GetBinarayResult(toCalculate)
+
+            Trace.WriteLine("Verify Return-Value:")
+            Trace.WriteLine($"Input: ""{toCalculate}""")
+            Trace.WriteLine($"Expected: ""{expected}""")
+            Trace.WriteLine($"Return-Value: ""{result}""")
+
+            Assert.AreEqual(expected, result, "Wrong value returned in function!")
+        End Sub
 
 #End Region
-
 
 #Region "GetOctaResult"
 
-        '<TestMethod>
-        'Sub T016_GetOctaResult_NULL_CO()
+        <TestMethod>
+        Sub T020_GetOctaResult_NULL_CO()
+            Dim expected As String = "Cannot convert INPUT into INTEGER!"
 
-        'End Sub
+            Using sw As New StringWriter()
 
-        '<TestMethod>
-        'Sub T017_GetOctaResult_NULL_RV()
+                Console.SetOut(sw)
+                dualConverter.GetOctaResult(Nothing)
+                Dim output As String = sw.ToString().Trim()
 
-        'End Sub
+                Trace.WriteLine("Verify Console-Output:")
+                Trace.WriteLine($"Input: """" (NULL/Nothing)")
+                Trace.WriteLine($"Expected: ""{expected}""")
+                Trace.WriteLine($"Console-Output: ""{output}""")
 
-        '<TestMethod>
-        'Sub T018_GetOctaResult_ValidInput_CO()
+                Assert.AreEqual(expected, output, "Wrong console output!")
+            End Using
+        End Sub
 
-        'End Sub
+        <TestMethod>
+        Sub T021_GetOctaResult_NULL_RV()
+            Dim result As String = dualConverter.GetOctaResult(Nothing)
 
-        '<TestMethod>
-        'Sub T020_GetOctaResult_ValidInput_RV()
+            Trace.WriteLine("Verify Return-Value:")
+            Trace.WriteLine($"Input: """" (Nothing/NULL)")
+            Trace.WriteLine($"Expected: """" (NULL, or EMPTY")
+            Trace.WriteLine($"Console-Output: ""{result}""")
 
-        'End Sub
+            Assert.IsTrue(String.IsNullOrEmpty(result), "Return-Value is Not NULL and Not EMPTY!")
+        End Sub
+
+        <TestMethod>
+        Sub T022_GetOctaResult_ValidInput_CO()
+            Using sw As New StringWriter()
+
+                Console.SetOut(sw)
+                dualConverter.GetOctaResult(toCalculate)
+                Dim output As String = sw.ToString().Trim()
+
+                Trace.WriteLine("Verify Console-Output:")
+                Trace.WriteLine($"Input: ""{toCalculate}""")
+                Trace.WriteLine("Expected: """" (NULL, or EMPTY)")
+                Trace.WriteLine($"Console-Output: ""{output}""")
+
+                Assert.IsTrue(String.IsNullOrEmpty(output), "Wrong console output!")
+            End Using
+        End Sub
+
+        <TestMethod>
+        Sub T023_GetOctaResult_ValidInput_RV()
+            Const expected As String = "361 100"
+            Dim result As String = dualConverter.GetOctaResult(toCalculate)
+
+            Trace.WriteLine("Verify Return-Value:")
+            Trace.WriteLine($"Input: ""{toCalculate}""")
+            Trace.WriteLine($"Expected: ""{expected}""")
+            Trace.WriteLine($"Return-Value: ""{result}""")
+
+            Assert.AreEqual(expected, result, "Wrong value returned in function!")
+        End Sub
 
 #End Region
-
 
 #Region "GetHEXResult"
 
-        '<TestMethod>
-        'Sub T021_GetHEXResult_NULL_CO()
+        <TestMethod>
+        Sub T024_GetHEXResult_NULL_CO()
+            Dim expected As String = "Cannot convert INPUT into INTEGER!"
 
-        'End Sub
+            Using sw As New StringWriter()
 
-        '<TestMethod>
-        'Sub T022_GetHEXResult_NULL_RV()
+                Console.SetOut(sw)
+                dualConverter.GetHEXResult(Nothing)
+                Dim output As String = sw.ToString().Trim()
 
-        'End Sub
+                Trace.WriteLine("Verify Console-Output:")
+                Trace.WriteLine($"Input: """" (NULL/Nothing)")
+                Trace.WriteLine($"Expected: ""{expected}""")
+                Trace.WriteLine($"Console-Output: ""{output}""")
 
-        '<TestMethod>
-        'Sub T023_GetHEXResult_ValidInput_CO()
+                Assert.AreEqual(expected, output, "Wrong console output!")
+            End Using
+        End Sub
 
-        'End Sub
+        <TestMethod>
+        Sub T025_GetHEXResult_NULL_RV()
+            Dim result As String = dualConverter.GetHEXResult(Nothing)
 
-        '<TestMethod>
-        'Sub T024_GetHEXResult_ValidInput_RV()
+            Trace.WriteLine("Verify Return-Value:")
+            Trace.WriteLine($"Input: """" (Nothing/NULL)")
+            Trace.WriteLine($"Expected: """" (NULL, or EMPTY")
+            Trace.WriteLine($"Console-Output: ""{result}""")
 
-        'End Sub
+            Assert.IsTrue(String.IsNullOrEmpty(result), "Return-Value is Not NULL and Not EMPTY!")
+        End Sub
+
+        <TestMethod>
+        Sub T026_GetHEXResult_ValidInput_CO()
+            Using sw As New StringWriter()
+
+                Console.SetOut(sw)
+                dualConverter.GetHEXResult(toCalculate)
+                Dim output As String = sw.ToString().Trim()
+
+                Trace.WriteLine("Verify Console-Output:")
+                Trace.WriteLine($"Input: ""{toCalculate}""")
+                Trace.WriteLine("Expected: """" (NULL, or EMPTY)")
+                Trace.WriteLine($"Console-Output: ""{output}""")
+
+                Assert.IsTrue(String.IsNullOrEmpty(output), "Wrong console output!")
+            End Using
+        End Sub
+
+        <TestMethod>
+        Sub T027_GetHEXResult_ValidInput_RV()
+            Const expected As String = "1 E240"
+            Dim result As String = dualConverter.GetHEXResult(toCalculate)
+
+            Trace.WriteLine("Verify Return-Value:")
+            Trace.WriteLine($"Input: ""{toCalculate}""")
+            Trace.WriteLine($"Expected: ""{expected}""")
+            Trace.WriteLine($"Return-Value: ""{result}""")
+
+            Assert.AreEqual(expected, result, "Wrong value returned in function!")
+        End Sub
 
 #End Region
-
 
     End Class
 End Namespace
