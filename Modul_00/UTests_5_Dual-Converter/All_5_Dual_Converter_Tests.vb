@@ -301,6 +301,7 @@ Namespace UTests_5_Dual_Converter
             Assert.AreEqual(expected, result, "Result of Function ""OrderAndGroupRestResult"" returned the wrong value!")
         End Sub
 
+        <TestMethod>
         Sub T015_OrderAndGroupRestResult_ValidInput_HEX_RV()
             Dim stackOfBinaries As Stack(Of Integer) = New Stack(Of Integer)({0, 4, 2, 14, 1})
             Dim binList As List(Of Integer) = stackOfBinaries.Reverse().ToList()
