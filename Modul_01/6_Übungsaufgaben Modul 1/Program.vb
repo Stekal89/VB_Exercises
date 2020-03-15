@@ -196,7 +196,7 @@ Module Program
                                 Case "2"
                                     CountSimilarWordsMenu()
                                 Case "3"
-                                    ' Call Function
+                                    CountSimilarSentencesMenu()
                                 Case "exit"
                                     finished = True
                                 Case Else
@@ -661,6 +661,103 @@ Module Program
         End If
 
         Return Nothing
+    End Function
+
+    ''' <summary>
+    ''' Menu for input and output of CountSimilarSentences function to get the necessary parameters from the user.
+    ''' Method calls following functions:
+    ''' - CountSimilarSentences
+    ''' - CountWords
+    ''' - CountSimilarWords
+    ''' </summary>
+    Sub CountSimilarSentencesMenu()
+        Dim firstArticle As String
+        Dim secondArticle As String
+
+        Do
+            Console.WriteLine($"{nl}# # # C O U N T   S I M I L A R   S E N T E N C E S # # #{nl}")
+            Console.WriteLine("Count all similar sentences, to exit the ""Count similar sentences"" menu, please type ""exit"" into the console window.")
+            Console.Write("Please insert the first article: ")
+            firstArticle = Console.ReadLine()
+
+            If ValidateStringInput(firstArticle) And firstArticle.ToLower() <> "exit" Then
+                Console.Write("Please insert the second article: ")
+                secondArticle = Console.ReadLine()
+
+                If ValidateStringInput(secondArticle) Then
+                    Dim similarSentences As Integer = CountSimilarSentenses(firstArticle, secondArticle)
+
+                    If similarSentences > 0 Then
+                        WriteSuccess($"{nl}Similar sentences: ""{similarSentences}""")
+                    Else
+                        WriteWarning($"{nl}Similar sentences: ""{similarSentences}""")
+                    End If
+                End If
+            End If
+
+            ContinueWithAnyKey()
+
+        Loop While firstArticle.ToLower() <> "exit"
+    End Sub
+
+    ''' <summary>
+    ''' Compare two articles, which can be more than one sentence per article. Compare each sentence from one article with the sentences of the second article.
+    ''' </summary>
+    ''' <param name="firstArticle">First article (more than one sentences, in one row)</param>
+    ''' <param name="secondArticle">Second article (more than one sentences, in one row)</param>
+    ''' <returns>Count of equal sentences</returns>
+    Function CountSimilarSentenses(firstArticle As String, secondArticle As String) As Integer
+
+        Dim equalSentences As Integer = 0
+
+        If ValidateStringInput(firstArticle) And ValidateStringInput(secondArticle) Then
+            Dim firstSentences As New List(Of String)
+            Dim secondSentences As New List(Of String)
+
+            firstSentences = firstArticle.Replace("!", ".").Replace("?", ".").Split(".").Where(Function(x) x <> "").ToList()
+            secondSentences = secondArticle.Replace("!", ".").Replace("?", ".").Split(".").Where(Function(x) x <> "").ToList()
+
+            Dim tempWordList As New List(Of String)
+
+            If firstSentences.Count() > 0 And secondSentences.Count() > 0 Then
+
+                WriteSuccess($"{nl}##################################")
+                WriteSuccess($"First-Sentences: ""{firstSentences.Count()}""")
+                For i = 0 To firstSentences.Count() - 1
+                    WriteSuccess($"{i + 1}. Sentence: ""{CountWords(firstSentences(i))}"" Words")
+                Next
+
+                WriteSuccess($"{nl}Second-Sentences: ""{secondSentences.Count()}""")
+                For i = 0 To secondSentences.Count() - 1
+                    WriteSuccess($"{i + 1}. Sentence: ""{CountWords(secondSentences(i))}"" Words")
+                Next
+
+                For i = 0 To firstSentences.Count() - 1
+
+                    For j = 0 To secondSentences.Count() - 1
+                        tempWordList = CountSimilarWords(firstSentences(i), secondSentences(j))
+                        If tempWordList.Count > 0 Then
+                            ' Sentence is similar if count of tempWordList equals count of fs and count of tempWordList equals count of ss
+                            If tempWordList.Count() = CountWords(firstSentences(i)) And tempWordList.Count() = CountWords(secondSentences(j)) Then
+                                WriteSuccess($"{nl}- - - - - - - - - - - - - - - - - - - - - - - - - -")
+                                WriteSuccess($"Matching sentence:")
+                                WriteSuccess($"""{i + 1}."" sentence of the first Article equals to:")
+                                WriteSuccess($"""{j + 1}."" sentence of the second Article")
+                                WriteSuccess("- - - - - - - - - - - - - - - - - - - - - - - - - -")
+                                equalSentences += 1
+                            End If
+                        End If
+                    Next
+                Next
+
+            Else
+                WriteError($"{nl}Sententces are not bigger than 0!")
+                WriteError($"First-Sentences: ""{firstSentences}""")
+                WriteError($"Second-Sentences: ""{secondSentences}""")
+            End If
+        End If
+
+        Return equalSentences
     End Function
 
 #End Region
