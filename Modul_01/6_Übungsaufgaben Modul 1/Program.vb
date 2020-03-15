@@ -151,7 +151,8 @@ Module Program
                                 Case "exit"
                                     finished = True
                                 Case Else
-                                    Console.WriteLine("Unknown input!")
+                                    WriteWarning($"{nl}Unknown input!")
+                                    WriteWarning($"Input: ""{inputAsString}""")
                             End Select
                             ContinueWithAnyKey()
 
@@ -175,7 +176,34 @@ Module Program
                         'SimilarWords und CountWords.
 
                         Console.Clear()
-                        Console.WriteLine($"{nl}{nl}{vbTab}###### Exercise 3 ######{nl}")
+
+                        Dim finished As Boolean
+                        Dim inputAsString
+
+                        Do
+                            Console.WriteLine($"{nl}{nl}{vbTab}###### Exercise 3 ######{nl}")
+                            Console.WriteLine($"{nl}# # # C O U N T   W O R D S # # #{nl}")
+                            Console.WriteLine("1) Count words of a sentence")
+                            Console.WriteLine("2) Count smilar words of two senteces")
+                            Console.WriteLine("3) Count similar sentences of two articles")
+                            Console.WriteLine("Count words, to exit the exercise, type ""exit"" into the console window.")
+                            Console.Write("Please choose: ")
+                            inputAsString = Console.ReadLine()
+
+                            Select Case inputAsString.ToLower()
+                                Case "1"
+                                    CountWordsMenu()
+                                Case "2"
+                                    CountSimilarWordsMenu()
+                                Case "3"
+                                    ' Call Function
+                                Case "exit"
+                                    finished = True
+                                Case Else
+                                    Console.WriteLine("Unknown input!")
+                                    ContinueWithAnyKey()
+                            End Select
+                        Loop While Not finished
 
 #End Region
                     Case "exit"
@@ -468,7 +496,7 @@ Module Program
                             WriteError($"User with ID ""{userNumb}"" does not exist!")
                         End If
                     Else
-                        WriteError("Input is not an integer!")
+                        WriteError($"{nl}Input is not an integer!")
                         WriteError($"Input: ""{userNumbAsString}""")
                     End If
                 End If
@@ -484,6 +512,156 @@ Module Program
 #End Region
 
 #Region "Exercise 3"
+
+    '3. Erstellen Sie die Methoden mit den folgenden Signaturen:
+    '[] static int CountWords(string sentence)
+    '[] static int CountSimilarWords(string sentence, string sentenceToCompare)
+    '[] static int CountSimilarSentences(string text, string text2)
+    'CountWords ist eine einfache Hilfsmethode, die sie später benötigen. Sie zählt lediglich die Wörter eines Satzes und gibt deren Anzahl zurück.
+    'CountSimilarWords nimmt zwei Sätze entgegen und zählt wieviele Wörter des ersten Satzes im zweiten Satz vorkommen. Verwenden Sie hierzu Schleifen und die Contains Methode.
+    'CountSimilarSentences zählt wieviele Sätze in zwei Texten gleich waren.
+    'Hinweis: Zwei Sätze sind gleich, wenn all ihre Wörter gleich sind. Verwenden Sie dazu Count
+    'SimilarWords und CountWords.
+
+    ''' <summary>
+    ''' Menu for input and output of CountWords function to get the necessary parameters from the user.
+    ''' Method calls the CountWords function
+    ''' </summary>
+    Sub CountWordsMenu()
+
+        Dim inputAsString As String
+
+        Do
+            Console.WriteLine($"{nl}# # # C O U N T   W O R D S   O F   A   S E N T E N C E # # #{nl}")
+            Console.WriteLine("Count all words of a sentence, to exit the ""Count words of a sentence"" menu, please type ""exit"" into the console window.")
+            Console.Write("Please insert a sentence: ")
+            inputAsString = Console.ReadLine()
+
+            If ValidateStringInput(inputAsString) Then
+                Console.Clear()
+                Dim words As Integer = CountWords(inputAsString)
+
+                If Nothing <> words Then
+                    WriteSuccess($"{nl}Sentence: ""{inputAsString}""")
+                    WriteSuccess($"Word-Count: ""{words}""")
+                Else
+                    WriteError($"{nl}Cannot count the words of the sentence:")
+                    WriteError(inputAsString)
+                End If
+            End If
+
+            ContinueWithAnyKey()
+
+        Loop While inputAsString.ToLower() <> "exit"
+
+    End Sub
+
+    ''' <summary>
+    ''' Count all words in a sentence.
+    ''' </summary>
+    ''' <param name="sentence">complete sentence</param>
+    ''' <returns>Count of words in a sentence</returns>
+    Function CountWords(sentence As String) As Integer?
+
+        If ValidateStringInput(sentence) Then
+            Dim sentenceAsList As New List(Of String)
+            sentenceAsList = sentence.Split(" ").ToList().Where(Function(x) x <> "").ToList()
+
+            Return sentenceAsList.Count()
+        End If
+
+        Return Nothing
+    End Function
+
+    ''' <summary>
+    ''' Menu for input and output of CountSimilarWords function to get the necessary parameters from the user.
+    ''' Method calls the CountSimilarWords function and uses also the CountWords function.
+    ''' </summary>
+    Sub CountSimilarWordsMenu()
+        Dim firstSentence As String
+        Dim secondSentence As String
+
+        Do
+            Console.WriteLine($"{nl}# # # C O U N T   S I M I L A R   W O R D S   O F   T W O   S E N T E N C E S # # #{nl}")
+            Console.WriteLine("Count all similar words of two sentences, to exit the ""Count similar words of two sentences"" menu, please type ""exit"" into the console window.")
+            Console.Write("Please insert the first sentence: ")
+            firstSentence = Console.ReadLine()
+
+            If ValidateStringInput(firstSentence) And firstSentence.ToLower() <> "exit" Then
+                Console.Write("Please insert the second sentence: ")
+                secondSentence = Console.ReadLine()
+
+                If ValidateStringInput(secondSentence) Then
+                    Dim similarWords As List(Of String)
+                    similarWords = CountSimilarWords(firstSentence, secondSentence)
+                    If Not IsNothing(similarWords) And similarWords.Count() > 0 Then
+                        WriteSuccess($"{nl}---------------------------")
+                        WriteSuccess($"Words in First-Sentence: ""{CountWords(firstSentence)}""")
+                        WriteSuccess($"Words in Second-Sentence: ""{CountWords(secondSentence)}""")
+                        WriteSuccess($"Similar words: ""{similarWords.Count()}""")
+                        WriteSuccess($"---------------------------")
+                    Else
+                        WriteWarning($"{nl}No similar words are found!")
+                    End If
+                End If
+            End If
+
+            ContinueWithAnyKey()
+
+        Loop While firstSentence.ToLower() <> "exit"
+    End Sub
+
+    ''' <summary>
+    ''' Compare two sentences and get only similar words in a list of strings.
+    ''' </summary>
+    ''' <param name="firstSentence">first sentence</param>
+    ''' <param name="secondSentence">second sentence</param>
+    ''' <returns>List of words</returns>
+    Function CountSimilarWords(firstSentence As String, secondSentence As String) As List(Of String)
+
+        If ValidateStringInput(firstSentence) And ValidateStringInput(secondSentence) Then
+            Dim firstWordList As New List(Of String)
+            Dim secondWordList As New List(Of String)
+
+            firstWordList = firstSentence.Split().Where(Function(x) x <> "").ToList()
+            secondWordList = secondSentence.Split().Where(Function(x) x <> "").ToList()
+
+            Dim uniqueWordList As New List(Of String)
+            Dim existingWords As New List(Of String)
+
+            For Each word In firstWordList
+                ' At first get all dublicates, to count each word only for one time
+                If (firstWordList.Where(Function(x) x.TrimEnd(",", ".", "!", "?", ":").ToLower() = word.TrimEnd(",", ".", "!", "?", ":").ToLower()).ToList().Count()) > 1 Then
+                    ' Check if word was already added to the list
+                    If (uniqueWordList.Where(Function(x) x.TrimEnd(",", ".", "!", "?", ":").ToLower() = word.TrimEnd(",", ".", "!", "?", ":").ToLower()).ToList().Count()) = 0 Then
+                        ' Add
+                        uniqueWordList.Add(word.TrimEnd(",", ".", "!", "?", ":").ToLower())
+                        ' Check if word exist in second list???
+                        'If Not IsNothing(secondWordList.Where(Function(x) x.ToLower() = word.ToLower()).ToList()) Then
+                        If (secondWordList.Where(Function(x) x.TrimEnd(",", ".", "!", "?", ":").ToLower() = word.TrimEnd(",", ".", "!", "?", ":").ToLower()).ToList().Count()) > 0 Then
+                            existingWords.Add(word.TrimEnd(",", ".", "!", "?", ":").ToLower())
+                        End If
+                    End If
+                Else
+                    ' Add word to list
+                    uniqueWordList.Add(word.TrimEnd(",", ".", "!", "?", ":").ToLower())
+
+                    ' Check if word exist in second list????
+                    If (secondWordList.Where(Function(x) x.TrimEnd(",", ".", "!", "?", ":").ToLower() = word.TrimEnd(",", ".", "!", "?", ":").ToLower()).ToList().Count()) > 0 Then
+                        existingWords.Add(word.TrimEnd(",", ".", "!", "?", ":").ToLower())
+                    End If
+                End If
+            Next
+
+            Return existingWords
+        Else
+            WriteError($"{nl}Minimum one of the sentences is Null, empty, or Whitespace!")
+            WriteError($"First-Sentence: ""{firstSentence}""")
+            WriteError($"Second-Sentence: ""{secondSentence}""")
+        End If
+
+        Return Nothing
+    End Function
 
 #End Region
 
