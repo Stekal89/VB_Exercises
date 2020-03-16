@@ -1,7 +1,7 @@
 Imports System
 
 Module Program
-    Sub Main(args As String())
+    Sub Main()
         'Klassenkomposition – Aufgaben
 
         ' 1. Erstellen Sie folgende Klassen. Wählen Sie geeignete Datentypen für die Felder. Erstellen Sie
